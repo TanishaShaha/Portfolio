@@ -1,0 +1,138 @@
+/* Background gradient layers */
+    body {
+      background: radial-gradient(ellipse at top left, #0c122f, transparent 30%),
+        radial-gradient(circle at bottom right, #36086c, #030515 100%);
+      min-height: 100vh;
+      color: #cbd5e1;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .filter-btn {
+    @apply px-3 py-1 rounded-md bg-gray-800 text-gray-300 hover:text-cyan-400 transition;
+  }
+  .filter-btn.active {
+    @apply bg-cyan-400 text-gray-900 font-semibold;
+  }
+  .project-item {
+    @apply bg-gray-700 text-white p-4 rounded;
+  }
+    /* Gradient underline for headings */
+    .gradient-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .gradient-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 3px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #22d3ee, #3b82f6);
+      box-shadow: 0 0 8px #22d3ee, 0 0 12px #3b82f6;
+    }
+    /* Floating label for inputs */
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label,
+    .floating-label textarea:focus + label,
+    .floating-label textarea:not(:placeholder-shown) + label {
+      transform: translateY(-100%) scale(0.75);
+      color: #22d3ee;
+    }
+    .floating-label label {
+      pointer-events: none;
+      left: 12px;
+      top: 14px;
+      position: absolute;
+      color: #94a3b8;
+      transition: all 0.3s ease;
+      background: #1e293b;
+      padding: 0 4px;
+      font-size: 1rem;
+    }
+    .floating-label input,
+    .floating-label textarea {
+      background: #1e293b;
+      border-radius: 0.375rem;
+      border: 1px solid transparent;
+      padding: 14px 12px 6px;
+      color: #e2e8f0;
+      outline-offset: 2px;
+      width: 100%;
+      resize: vertical;
+    }
+    .floating-label input:focus,
+    .floating-label textarea:focus {
+      border-color: #22d3ee;
+      box-shadow: 0 0 6px #22d3ee;
+    }
+    /* Scrollbar for project filter buttons */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      overflow-x: auto;
+    }
+    /* Social icon round buttons on left */
+    .social-icons {
+      position: fixed;
+      bottom: 4rem;
+      left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      z-index: 50;
+    }
+    .social-icons a {
+      background: #1e293b;
+      color: #94a3b8;
+      width: 2.75rem;
+      height: 2.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 9999px;
+      box-shadow: 0 0 4px #0f172a;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    .social-icons a:hover {
+      background: #22d3ee;
+      color: #0c122f;
+      box-shadow: 0 0 10px #22d3ee;
+    }
+    /* Scroll to top button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #22d3ee;
+      color: #0c122f;
+      border-radius: 9999px;
+      border: none;
+      padding: 0.75rem 1rem;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #22d3ee;
+      z-index: 60;
+      display: none;
+      transition: background-color 0.3s ease;
+    }
+    #scrollTopBtn:hover {
+      background: #3b82f6;
+    }
+    /* Navigation background & link active */
+    nav {
+      background-color: #0f172a;
+      box-shadow: 0 2px 8px rgb(13 27 54 / 0.7);
+      z-index: 100;
+    }
+    nav a {
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #22d3ee;
+    }
