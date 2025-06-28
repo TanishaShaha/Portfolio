@@ -42,11 +42,11 @@ Some featured projects included in my portfolio:
 
 The portfolio is hosted with GitHub Pages. You can visit it here:
 
-👉 [View My Portfolio](https://tanishashaha.github.io/)
+👉 [View My Portfolio](https://tanishashaha.github.io/Portfolio/)
 
 Or clone and run locally:
 
 ```bash
-git clone https://github.com/TanishaShaha/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/TanishaShaha/portfolio.git
+cd portfolio
 # open index.html in your browser
