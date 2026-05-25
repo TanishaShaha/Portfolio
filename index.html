@@ -6,14 +6,173 @@
   <title>Tanisha Shaha Portfolio</title>
    <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome CDN for icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
- 
+  <style>
+    /* Background gradient layers */
+    body {
+      background: radial-gradient(ellipse at top left, #0c122f, transparent 30%),
+        radial-gradient(circle at bottom right, #36086c, #030515 100%);
+      min-height: 100vh;
+      color: #cbd5e1;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-btn {
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.375rem;
+      background-color: #1f2937;
+      color: #d1d5db;
+      transition: color 0.2s, background-color 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .filter-btn:hover {
+      color: #22d3ee;
+    }
+    .filter-btn.active {
+      background-color: #22d3ee;
+      color: #111827;
+      font-weight: 600;
+    }
+    .project-item {
+      background: #374151;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 0.375rem;
+    }
+    .badge {
+      background: #1e3a4f;
+      color: #67e8f9;
+      border-radius: 0.375rem;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+    }
+    /* Gradient underline for headings */
+    .gradient-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .gradient-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 3px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #22d3ee, #3b82f6);
+      box-shadow: 0 0 8px #22d3ee, 0 0 12px #3b82f6;
+    }
+    /* Floating label for inputs */
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label,
+    .floating-label textarea:focus + label,
+    .floating-label textarea:not(:placeholder-shown) + label {
+      transform: translateY(-100%) scale(0.75);
+      color: #22d3ee;
+    }
+    .floating-label label {
+      pointer-events: none;
+      left: 12px;
+      top: 14px;
+      position: absolute;
+      color: #94a3b8;
+      transition: all 0.3s ease;
+      background: #1e293b;
+      padding: 0 4px;
+      font-size: 1rem;
+    }
+    .floating-label input,
+    .floating-label textarea {
+      background: #1e293b;
+      border-radius: 0.375rem;
+      border: 1px solid transparent;
+      padding: 14px 12px 6px;
+      color: #e2e8f0;
+      outline-offset: 2px;
+      width: 100%;
+      resize: vertical;
+    }
+    .floating-label input:focus,
+    .floating-label textarea:focus {
+      border-color: #22d3ee;
+      box-shadow: 0 0 6px #22d3ee;
+      outline: none;
+    }
+    /* Scrollbar for project filter buttons */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      overflow-x: auto;
+    }
+    /* Social icon round buttons on left */
+    .social-icons {
+      position: fixed;
+      bottom: 4rem;
+      left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      z-index: 50;
+    }
+    .social-icons a {
+      background: #1e293b;
+      color: #94a3b8;
+      width: 2.75rem;
+      height: 2.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 9999px;
+      box-shadow: 0 0 4px #0f172a;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    .social-icons a:hover {
+      background: #22d3ee;
+      color: #0c122f;
+      box-shadow: 0 0 10px #22d3ee;
+    }
+    /* Scroll to top button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #22d3ee;
+      color: #0c122f;
+      border-radius: 9999px;
+      border: none;
+      padding: 0.75rem 1rem;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #22d3ee;
+      z-index: 60;
+      display: none;
+      transition: background-color 0.3s ease;
+    }
+    #scrollTopBtn:hover {
+      background: #3b82f6;
+    }
+    /* Navigation background & link active */
+    nav {
+      background-color: #0f172a;
+      box-shadow: 0 2px 8px rgb(13 27 54 / 0.7);
+      z-index: 100;
+    }
+    nav a {
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #22d3ee;
+    }
+  </style>
 </head>
 <body class="relative">
 
@@ -25,8 +184,11 @@
         <li><a href="#home" class="nav-link px-2 py-1 rounded-md active">Home</a></li>
         <li><a href="#about" class="nav-link px-2 py-1 rounded-md">About</a></li>
         <li><a href="#goals" class="nav-link px-2 py-1 rounded-md">Goals</a></li>
+        <li><a href="#experience" class="nav-link px-2 py-1 rounded-md">Experience</a></li>
         <li><a href="#projects" class="nav-link px-2 py-1 rounded-md">Projects</a></li>
         <li><a href="#skills" class="nav-link px-2 py-1 rounded-md">Skills</a></li>
+        <li><a href="#research" class="nav-link px-2 py-1 rounded-md">Research</a></li>
+        <li><a href="#awards" class="nav-link px-2 py-1 rounded-md">Awards</a></li>
         <li><a href="#resume" class="nav-link px-2 py-1 rounded-md">Resume</a></li>
         <li><a href="#contact" class="nav-link px-2 py-1 rounded-md">Contact</a></li>
       </ul>
@@ -38,12 +200,10 @@
     <a href="https://github.com/TanishaShaha" target="_blank" rel="noopener" aria-label="GitHub profile">
       <i class="fab fa-github fa-lg"></i>
     </a>
-   <a href="https://www.linkedin.com/in/tanisha-shaha" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+    <a href="https://www.linkedin.com/in/tanisha-shaha" target="_blank" rel="noopener" aria-label="LinkedIn profile">
       <i class="fab fa-linkedin-in fa-lg"></i>
     </a>
-   <!-- <a href="mailto:shaha.tanisha@gmail.com" aria-label="Email Tanisha Shaha">-->
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shaha.tanisha@gmail.com&su=Hello%20Tanisha&body=I%20wanted%20to%20say%20hi!" aria-label="Email Tanisha Shaha">
-
       <i class="fas fa-envelope fa-lg"></i>
     </a>
   </div>
@@ -55,7 +215,7 @@
       <span class="text-cyan-400">I Build simple and user-friendly web and mobile applications.</span>
     </h1>
     <p class="max-w-xl mt-5 text-gray-300">
-      A final year Computer Engineering student passionate about creating clean, modern digital experiences.
+      A final year Computer Engineering student and Frontend Developer Intern passionate about creating clean, modern digital experiences.
     </p>
     <div class="mt-8 space-x-4">
       <a href="#projects" class="inline-block bg-gradient-to-r from-cyan-400 to-blue-600 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:from-cyan-500 hover:to-blue-700 transition">
@@ -70,7 +230,6 @@
   <!-- About Section -->
   <section id="about" class="max-w-7xl mx-auto px-6 sm:px-10 py-16">
     <div class="text-center mb-12">
-      
       <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">About Me</h2>
     </div>
     <div class="flex flex-col md:flex-row gap-10 items-center md:items-start">
@@ -87,20 +246,13 @@
       </div>
       <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg flex-1 text-gray-300 leading-relaxed text-sm md:text-base">
         <p>
-          Hello! I am a final-year Computer Engineering student at NMIMS, Navi Mumbai with an interest and experience in both web and mobile development. 
-           I’m currently expanding my skills in both web and mobile app development, with a 
-           growing focus on UI/UX design and backend fundamentals to build complete and user-focused applications.
+          Hello! I am a final-year Computer Engineering student at NMIMS, Navi Mumbai, currently working as a Frontend Developer Intern at CartGeek. I have hands-on experience in designing and implementing responsive, user-friendly web interfaces using HTML, CSS, JavaScript, PHP, Laravel, and WordPress, with a growing focus on mobile app development and UI/UX design.
         </p>
         <p class="mt-4">
-         My passion lies in creating seamless, intuitive digital experiences. I’ve worked on projects using HTML, CSS,
-         and JavaScript to develop engaging web interfaces, and I’ve also gained practical experience in Android
-          development through mobile app projects. I’m now actively exploring tools and frameworks that support 
-          cross-platform mobile app development.
+          My passion lies in creating seamless, intuitive digital experiences. I've worked on production websites optimized for performance and consistency, and I've also built Android and Flutter-based mobile apps across various domains — from health and fitness to AI-powered crop disease diagnosis. I follow Agile methodologies and use Git for version control in collaborative environments.
         </p>
         <p class="mt-4">
-          As I approach graduation, I'm eager to apply my academic knowledge and creative energy to real-world challenges.
-          I am a firm believer in lifelong learning and thrive in collaborative environments where I can contribute to a team's success while continuously growing my own skills.
-          My goal is to craft web experiences that are not only functional but also leave a lasting positive impression.
+          As I approach graduation, I'm eager to apply my academic knowledge and hands-on experience to real-world challenges. I am a firm believer in lifelong learning and thrive in collaborative environments where I can contribute to a team's success while continuously growing my own skills. My goal is to craft digital experiences that are not only functional but also leave a lasting positive impression.
         </p>
         <div class="mt-6 grid grid-cols-2 gap-6 text-sm text-gray-400">
           <div>
@@ -108,7 +260,7 @@
             <div class="mt-4"><strong class="text-gray-300">Location</strong><br />Mumbai</div>
           </div>
           <div>
-            <div><strong class="text-gray-300">Email</strong><br /><a href="mailto:dhlananh2309@gmail.com" class="hover:underline text-cyan-400">shaha.tanisha@gmail.com</a></div>
+            <div><strong class="text-gray-300">Email</strong><br /><a href="mailto:shaha.tanisha@gmail.com" class="hover:underline text-cyan-400">shaha.tanisha@gmail.com</a></div>
             <div class="mt-4"><strong class="text-gray-300">Availability</strong><br /><span class="text-green-400 font-semibold">Open to opportunities</span></div>
           </div>
         </div>
@@ -125,7 +277,7 @@
       <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg border border-transparent hover:border-cyan-400 transition">
         <div class="flex items-center mb-3 text-cyan-400"><i class="fas fa-rocket fa-lg mr-2"></i><h3 class="font-semibold">Short-Term Goal</h3></div>
         <p>
-         To secure a role as a Web or Mobile Developer where I can apply my skills, work on real-world projects, and continue learning new technologies while contributing to user-focused digital solutions.
+          To grow as a Frontend Developer by applying my skills in HTML, CSS, JavaScript, Laravel, and mobile development to deliver impactful, user-focused digital solutions in a professional environment.
         </p>
       </div>
       <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg border border-transparent hover:border-cyan-400 transition">
@@ -137,8 +289,32 @@
       <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg border border-transparent hover:border-cyan-400 transition">
         <div class="flex items-center mb-3 text-cyan-400"><i class="fas fa-bullseye fa-lg mr-2"></i><h3 class="font-semibold">Long-Term Goal</h3></div>
         <p>
-         To become a technical leader, contributing to innovative products, mentoring others, and helping shape solutions that combine technology and thoughtful design to make a positive impact.
+          To become a technical leader, contributing to innovative products, mentoring others, and helping shape solutions that combine technology and thoughtful design to make a positive impact.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section (NEW) -->
+  <section id="experience" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Experience</h2>
+    </div>
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg text-gray-300 border border-transparent hover:border-cyan-400 transition">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+          <div>
+            <h3 class="text-cyan-400 font-semibold text-lg">Frontend Developer Intern</h3>
+            <p class="text-gray-400 text-sm font-medium">CartGeek &nbsp;&middot;&nbsp; <span class="text-xs text-gray-500">VS Code, XAMPP</span></p>
+          </div>
+          <span class="text-xs text-gray-400 mt-1 sm:mt-0">Dec 2025 &ndash; Present</span>
+        </div>
+        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300">
+          <li>Led frontend development across high-impact projects, implementing fully responsive and visually consistent interfaces, resulting in a 15% improvement in user satisfaction scores.</li>
+          <li>Developed and optimized website frontends on WordPress and Laravel, including UI implementation and alignment adjustments, leading to a 10% reduction in page load times.</li>
+          <li>Implemented version control workflows using Git to manage code changes and maintain code integrity across projects.</li>
+          <li>Worked with HTML, CSS, JavaScript, and PHP to build and maintain scalable frontend features for production applications.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -148,177 +324,123 @@
     <div class="text-center mb-6">
       <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Featured Projects</h2>
     </div>
- <br>
-
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-8 scrollbar-hide">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="app">Mobile Apps</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="c++">C++</button>
+      <button class="filter-btn" data-filter="sql">SQL</button>
+    </div>
     <div class="grid gap-8 md:grid-cols-3">
 
-
-
-
-       <!-- Project Card 1 -->
+      <!-- Project Card 1 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img
-          src="images/Prakriti.jpg"
-          alt="Prakriti"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-           style="
-            height: 200px;
-            width: 300px;
-            object-fit:cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/Prakriti.jpg" alt="Prakriti" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">Prakriti</h3>
         <p class="text-sm mb-3">
-         A user-friendly mobile app that enables farmers to quickly scan their crop leaves, accurately identify diseases, and receive tailored treatment solutions.
+          A lightweight offline AI-based mobile application using the EdgeViT-S model for crop disease detection on low-end smartphones — enabling farmers to diagnose diseases and receive treatment solutions without internet connectivity.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: July 2025</span>
-          <span>⚡ Status: <span class="text-blue-500 font-semibold">InProgress</span></span>
+          <span>&#128197; Nov 2025</span>
+          <span>&#9889; Status: <span class="text-blue-500 font-semibold">In Progress</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">XML</span>
+          <span class="badge">Python</span>
           <span class="badge">Java</span>
-          
+          <span class="badge">SQLite</span>
         </div>
-        <a href="#" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+        <a href="#" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
       </div>
 
       <!-- Project Card 2 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img
-          src="images/SoulScript.jpg"
-          alt="SoulScript"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-           style="
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/SoulScript.jpg" alt="SoulScript" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">SoulScript</h3>
         <p class="text-sm mb-3">
-         A mobile app designed to help users reflect on their thoughts, track moods, and gain personal insights for better well-being.
+          A Flutter-based journaling app featuring daily reflections, affirmations, and sleep stories — designed to promote mindfulness and mental well-being with Firebase-backed authentication and data storage.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: June 2025</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; May 2025 &ndash; Jun 2025</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
           <span class="badge">Flutter</span>
           <span class="badge">Dart</span>
           <span class="badge">Firebase</span>
-          
         </div>
-        <a href="https://github.com/TanishaShaha/SoulScript---Journal-App" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+        <a href="https://github.com/TanishaShaha/SoulScript---Journal-App" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
       </div>
-    
 
       <!-- Project Card 3 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img
-          src="images/active_life.jpg"
-          alt="ActiveLife"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/active_life.jpg" alt="ActiveLife" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">ActiveLife - Fitness Tracker App</h3>
         <p class="text-sm mb-3">
-          An Android app that helps users track workouts, steps, and meal plans for a healthier, active and balanced lifestyle.
+          An Android app featuring workout plans, meal tracking, BMI calculator, and step counter with an intuitive interface and personalized progress tracking for a healthier, active lifestyle.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: Sep 2024</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; Oct 2024 &ndash; Nov 2024</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">XML</span>
           <span class="badge">Java</span>
           <span class="badge">SQLite</span>
         </div>
-        <a href="https://github.com/TanishaShaha/Active-Life" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for Bookstore Chatbot project">
+        <a href="https://github.com/TanishaShaha/Active-Life" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
       </div>
 
       <!-- Project Card 4 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img
-          src="images/Ransomware_Detector.png"
-          alt="Ransomware Detector"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-           style="
-            height: 200px;
-            width: 300px;
-            object-fit:cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/Ransomware_Detector.png" alt="Ransomware Detector" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">Ransomware Detector In Windows</h3>
         <p class="text-sm mb-3">
-        A user-friendly GUI application that allows users to safely upload .exe files, detect potential ransomware based on network behavior, and receive instant, reliable threat classification.
-      </p>
+          A lightweight Windows GUI application integrating an XGBoost model to classify .exe files as benign or malicious in real time, with network behavior analysis for improved detection efficiency.
+        </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: Jan 2025</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; Feb 2025 &ndash; Mar 2025</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-  <span class="badge">Python</span>
-  <span class="badge">Tkinter</span>
-  <span class="badge">scikit-learn</span>
-  <span class="badge">Wireshark</span>
-  <span class="badge">PyShark</span>
-  <span class="badge">VirtualBox</span>
-</div>
-        <a href="https://github.com/TanishaShaha/RansomwareDetector" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+          <span class="badge">Python</span>
+          <span class="badge">XGBoost</span>
+          <span class="badge">Tkinter</span>
+          <span class="badge">Wireshark</span>
+          <span class="badge">PyShark</span>
+          <span class="badge">VirtualBox</span>
+        </div>
+        <a href="https://github.com/TanishaShaha/RansomwareDetector" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
       </div>
 
       <!-- Project Card 5 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="web" tabindex="0">
-        <img
-          src="images/tasty_trails.jpg"
-          alt="Tasty Trails"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/tasty_trails.jpg" alt="Tasty Trails" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">Tasty Trails</h3>
         <p class="text-sm mb-3">
-        A web app inspired by Swiggy, letting users explore menus, discover dishes, and simulate placing food orders online.
+          A web app inspired by Swiggy, letting users explore menus, discover dishes, and simulate placing food orders online.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: Feb 2024</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; Feb 2024</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
           <span class="badge">HTML</span>
@@ -326,377 +448,323 @@
           <span class="badge">JavaScript</span>
           <span class="badge">AngularJS</span>
         </div>
-        <a href="https://tanishashaha.github.io/Tasty-Trails/" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and MongoDB project">
+        <a href="https://tanishashaha.github.io/Tasty-Trails/" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Demo
         </a>
       </div>
 
       <!-- Project Card 6 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="web" tabindex="0">
-        <img
-          src="images/ShopLingo.jpg"
-          alt="ShopLingo"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-            style="
-            height: 200px; 
-            width: 300px; 
-            object-fit: contain; /* Adjusted */
-            object-position: center; 
-            border-radius: 8px; 
-            margin: 0 auto 1rem auto;
-            display: flex; /* Centering */
-            align-items: center; 
-            justify-content: center;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/ShopLingo.jpg" alt="ShopLingo" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:contain;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">ShopLingo</h3>
         <p class="text-sm mb-3">
-        A web replica of the AJIO homepage, showcasing stylish layouts and product displays using HTML, CSS, and JavaScript.
+          A web replica of the AJIO homepage, showcasing stylish layouts and product displays using HTML, CSS, and JavaScript.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: May 2024</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; May 2024</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
           <span class="badge">HTML</span>
           <span class="badge">CSS</span>
           <span class="badge">JavaScript</span>
         </div>
-        <a href="https://tanishashaha.github.io/Shoplingo/" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+        <a href="https://tanishashaha.github.io/Shoplingo/" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Demo
         </a>
       </div>
-    
 
-    <!-- Project Card 7 -->
+      <!-- Project Card 7 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="c++" tabindex="0">
-        <img
-          src="images/Movie_Ticket_Booking.png"
-          alt="SoulScript"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-            style="
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/Movie_Ticket_Booking.png" alt="Movie Ticket Booking System" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">Movie Ticket Booking System</h3>
         <p class="text-sm mb-3">
-        A C++ system that lets users browse movies, select showtimes, choose seats, and confirm ticket bookings seamlessly.
+          A C++ system that lets users browse movies, select showtimes, choose seats, and confirm ticket bookings seamlessly.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: Oct 2022</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; Oct 2022</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
           <span class="badge">C++</span>
         </div>
-        <a href="https://github.com/TanishaShaha/movieticketbooking-system-c" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+        <a href="https://github.com/TanishaShaha/movieticketbooking-system-c" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
       </div>
-    
 
-    <!-- Project Card 8 -->
+      <!-- Project Card 8 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="c++" tabindex="0">
-        <img
-          src="images/railway.png"
-          alt="Railway"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-           style="
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/railway.png" alt="Railway" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">Railway Reservation System</h3>
         <p class="text-sm mb-3">
-        A C++ program that allows users to search trains, book tickets, manage food preferences, and handle cancellations for seamless rail travel planning.
+          A C++ program that allows users to search trains, book tickets, manage food preferences, and handle cancellations for seamless rail travel planning.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: Nov 2023</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; Nov 2023</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
           <span class="badge">C++</span>
         </div>
-        <a href="https://github.com/TanishaShaha/Railway-Reservation-System\" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+        <a href="https://github.com/TanishaShaha/Railway-Reservation-System" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
       </div>
-   
 
-    <!-- Project Card 9 -->
+      <!-- Project Card 9 -->
       <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="python" tabindex="0">
-        <img
-          src="images/expense_tracker.jpeg"
-          alt="Expense Tracker"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-           style="
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+        <img src="images/expense_tracker.jpeg" alt="Expense Tracker" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">Expense Tracker</h3>
         <p class="text-sm mb-3">
-        A Python application that helps users monitor spending and visualize expenses through interactive charts and reports.
+          A Python application that helps users monitor spending and visualize expenses through interactive charts and reports.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: Jun 2024</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; Jun 2024</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
           <span class="badge">Python</span>
         </div>
-        <a href="https://github.com/TanishaShaha/Smart-Expense-Tracker" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+        <a href="https://github.com/TanishaShaha/Smart-Expense-Tracker" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
       </div>
-   
-    <!-- Project Card 10 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="c++" tabindex="0">
-        <img
-          src="images/movie_ticket.png"
-          alt="Movie Ticket Booking System (SQL)"
-          class="rounded-md mb-4 object-cover object-center h-48 w-full"
-            style="
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            "
-          onerror="this.style.display='none'"
-        />
+
+      <!-- Project Card 10 -->
+      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="sql" tabindex="0">
+        <img src="images/movie_ticket.png" alt="Movie Ticket Booking System (SQL)" class="rounded-md mb-4 object-cover object-center h-48 w-full"
+          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
+          onerror="this.style.display='none'" />
         <h3 class="text-cyan-400 font-semibold text-lg mb-1">Movie Ticket Booking System (SQL)</h3>
         <p class="text-sm mb-3">
-         A MySQL database to store and retrieve movie details, showtimes, and bookings for smooth ticket management.
+          A MySQL database to store and retrieve movie details, showtimes, and bookings for smooth ticket management.
         </p>
         <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>📅 Start: Mar 2024</span>
-          <span>⚡ Status: <span class="text-green-500 font-semibold">Completed</span></span>
+          <span>&#128197; Mar 2024</span>
+          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
         </div>
         <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
           <span class="badge">SQL</span>
         </div>
-        <a href="https://github.com/TanishaShaha/movie-ticket-booking-system-db-queries" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center" aria-label="View code for RAG System with Gemini and ChromaDB project">
+        <a href="https://github.com/TanishaShaha/movie-ticket-booking-system-db-queries" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
           <i class="fas fa-code mr-2"></i> View Code
         </a>
-
       </div>
-       </div>
+
+    </div>
   </section>
 
   <!-- Skills Section -->
   <section id="skills" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
     <div class="text-center mb-12">
-       <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">My Skills</h2>
+      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">My Skills</h2>
     </div>
     <div class="grid gap-8 md:grid-cols-3 text-gray-300">
+
       <!-- Frontend and Mobile Development -->
       <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg">
-        <h3 class="mb-6 font-semibold text-lg text-white">Frontend & Mobile Development</h3>
+        <h3 class="mb-6 font-semibold text-lg text-white">Frontend &amp; Mobile Development</h3>
         <div class="grid grid-cols-4 gap-4">
-
-            <!--HTML5-->
-            <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-             src="images/html.png" 
-             alt="HTML5 Logo"
-             class="h-10 w-10 object-contain"
-              />
-             <span class="text-xs">HTML5</span>
-            </div>
-
-            <!--CSS3-->
-            <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/css.png" 
-               alt="CSS3 Logo"
-               class="h-10 w-13 object-contain"
-            />
-
-             <span class="text-xs">CSS3</span>
-            </div> 
-
-          <!--JavaScript-->
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/js.png" 
-               alt="JavaScript Logo"
-               class="h-10 w-14 object-contain"
-            />
-
-             <span class="text-xs">JavaScript</span>
-            </div>
-
-             <!--AngularJS-->
-           <div class="flex flex-col items-center gap-2 text-center">
-            <img 
-               src="images/angularjs.png" 
-               alt="AngularJS Logo"
-               class="h-10 w-14 object-contain"
-            />
+            <img src="images/html.png" alt="HTML5 Logo" class="h-10 w-10 object-contain" />
+            <span class="text-xs">HTML5</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/css.png" alt="CSS3 Logo" class="h-10 w-13 object-contain" />
+            <span class="text-xs">CSS3</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/js.png" alt="JavaScript Logo" class="h-10 w-14 object-contain" />
+            <span class="text-xs">JavaScript</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/angularjs.png" alt="AngularJS Logo" class="h-10 w-14 object-contain" />
             <span class="text-xs">AngularJS</span>
-          </div> 
-
-          <!--XML-->
-            <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/xml.png" 
-               alt="XML Logo"
-               class="h-10 w-14 object-contain"
-            />
-
-             <span class="text-xs">XML</span>
-            </div>
-         
-            <!--JAVA-->
-            <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/java.png" 
-               alt="Java"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">Java</span>
-            </div>
-
-    
-            <!--Flutter-->
-            <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/flutter.png" 
-               alt="Flutter Logo"
-               class="h-10 w-14 object-contain"
-            />
-
-             <span class="text-xs">Flutter <br> (Learning)</span>
-            </div>
-
-            <!--Dart-->
-            <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/dart.png" 
-               alt="Dart Logo"
-               class="h-10 w-14 object-contain"
-            />
-
-             <span class="text-xs">Dart <br> (Learning)</span>
-            </div>
-         
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/xml.png" alt="XML Logo" class="h-10 w-14 object-contain" />
+            <span class="text-xs">XML</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/java.png" alt="Java" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Java</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/flutter.png" alt="Flutter Logo" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Flutter<br>(Learning)</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/dart.png" alt="Dart Logo" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Dart<br>(Learning)</span>
+          </div>
         </div>
       </div>
 
       <!-- Backend & Database -->
       <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg">
-        <h3 class="mb-6 font-semibold text-lg text-white">Backend & Database</h3>
+        <h3 class="mb-6 font-semibold text-lg text-white">Backend &amp; Database</h3>
         <div class="grid grid-cols-4 gap-4">
-
-          <!--MySQL-->
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/mysql.jpg" 
-               alt="MySQL Logo"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">MySQL</span>
-            </div>
-
-            <!--SQLite-->
+            <img src="images/mysql.jpg" alt="MySQL Logo" class="h-10 w-14 object-contain" />
+            <span class="text-xs">MySQL</span>
+          </div>
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/sqlite.png" 
-               alt="SQLite"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">SQLite</span>
-            </div>
-
-            <!--Firebase-->
+            <img src="images/sqlite.png" alt="SQLite" class="h-10 w-14 object-contain" />
+            <span class="text-xs">SQLite</span>
+          </div>
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/firebase.png" 
-               alt="Firebase"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">Firebase <br> (Learning)</span>
-            </div>
+            <img src="images/firebase.png" alt="Firebase" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Firebase<br>(Learning)</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/laravel.png" alt="Laravel" class="h-10 w-14 object-contain"
+              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-red-700 rounded text-white text-xs font-bold&quot;&gt;L&lt;/div&gt;'" />
+            <span class="text-xs">Laravel</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/wordpress.png" alt="WordPress" class="h-10 w-14 object-contain"
+              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-blue-800 rounded text-white text-xs font-bold&quot;&gt;WP&lt;/div&gt;'" />
+            <span class="text-xs">WordPress</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/php.png" alt="PHP" class="h-10 w-14 object-contain"
+              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-indigo-700 rounded text-white text-xs font-bold&quot;&gt;PHP&lt;/div&gt;'" />
+            <span class="text-xs">PHP</span>
+          </div>
         </div>
       </div>
 
       <!-- Tools & Methodologies -->
       <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg">
-        <h3 class="mb-6 font-semibold text-lg text-white">Tools & Methodologies</h3>
+        <h3 class="mb-6 font-semibold text-lg text-white">Tools &amp; Methodologies</h3>
         <div class="grid grid-cols-3 gap-6">
-           <!--Android Studio-->
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/android_studio.png" 
-               alt="Android Studio"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">Android Studio</span>
-            </div>
-
-             <!--Visual Studio-->
+            <img src="images/android_studio.png" alt="Android Studio" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Android Studio</span>
+          </div>
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/visual_studio.png" 
-               alt="Visual Studio Code"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">Visual Studio Code </span>
-            </div>
-
-             <!--Figma-->
+            <img src="images/visual_studio.png" alt="Visual Studio Code" class="h-10 w-14 object-contain" />
+            <span class="text-xs">VS Code</span>
+          </div>
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/figma.png" 
-               alt="Figma"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">Figma</span>
-            </div>
-
-             <!--Responsive Web Design-->
+            <img src="images/figma.png" alt="Figma" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Figma</span>
+          </div>
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/responsive_web_design.png" 
-               alt="Responsive Web Design"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">Responsiveness <br> (Learning)</span>
-            </div>
-
-             <!--Tableau-->
+            <img src="images/responsive_web_design.png" alt="Responsive Web Design" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Responsiveness<br>(Learning)</span>
+          </div>
           <div class="flex flex-col items-center gap-2 text-center">
-              <img 
-               src="images/tableau.jpg" 
-               alt="Tableau"
-               class="h-10 w-14 object-contain"
-               />
-             <span class="text-xs">Tableau</span>
-            </div>
+            <img src="images/tableau.jpg" alt="Tableau" class="h-10 w-14 object-contain" />
+            <span class="text-xs">Tableau</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/git.png" alt="Git" class="h-10 w-14 object-contain"
+              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-orange-700 rounded text-white text-xs font-bold&quot;&gt;Git&lt;/div&gt;'" />
+            <span class="text-xs">Git</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 text-center">
+            <img src="images/xampp.png" alt="XAMPP" class="h-10 w-14 object-contain"
+              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-orange-500 rounded text-white text-xs font-bold&quot;&gt;XAMPP&lt;/div&gt;'" />
+            <span class="text-xs">XAMPP</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Research Papers Section (NEW) -->
+  <section id="research" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Research Papers</h2>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg text-gray-300 border border-transparent hover:border-cyan-400 transition">
+        <div class="flex items-start gap-3 mb-3">
+          <i class="fas fa-file-alt text-cyan-400 text-xl mt-1"></i>
+          <div>
+            <h3 class="text-white font-semibold">Prakriti: An Offline Mobile Application for Crop Disease Diagnosis</h3>
+            <p class="text-cyan-400 text-xs mt-1">6th Biennial International Conference on Nascent Technologies in Engineering (ICNTE)</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400">
+          Research focused on a lightweight offline crop disease diagnosis system optimized for low-end smartphones using the EdgeViT-S model — enabling AI-powered agriculture in connectivity-limited regions.
+        </p>
+      </div>
+      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg text-gray-300 border border-transparent hover:border-cyan-400 transition">
+        <div class="flex items-start gap-3 mb-3">
+          <i class="fas fa-file-alt text-cyan-400 text-xl mt-1"></i>
+          <div>
+            <h3 class="text-white font-semibold">Ransomware Detection using Network Features in Windows Environments</h3>
+            <p class="text-cyan-400 text-xs mt-1">Nextgen Technology and AI for Sustainable Future (NTAI) Conference</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400">
+          Developed a real-time ransomware detection system using XGBoost with a lightweight Windows GUI application, analyzing network behavior to accurately classify executable files.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Certifications Section (NEW) -->
+  <section id="awards" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Awards &amp; Certifications</h2>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
+        <i class="fas fa-award text-yellow-400 text-2xl"></i>
+        <div>
+          <p class="text-white font-medium text-sm">AWS Academy Cloud Architecting</p>
+          <p class="text-gray-400 text-xs">Oct 2025</p>
+        </div>
+      </div>
+      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
+        <i class="fas fa-certificate text-cyan-400 text-2xl"></i>
+        <div>
+          <p class="text-white font-medium text-sm">Microsoft Learn &ndash; Introduction to AI in Azure</p>
+          <p class="text-gray-400 text-xs">Jul 2025</p>
+        </div>
+      </div>
+      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
+        <i class="fas fa-certificate text-cyan-400 text-2xl"></i>
+        <div>
+          <p class="text-white font-medium text-sm">TATA &ndash; GenAI Powered Data Analytics Job Simulation</p>
+          <p class="text-gray-400 text-xs">Jun 2025 &middot; Forage</p>
+        </div>
+      </div>
+      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
+        <i class="fas fa-certificate text-cyan-400 text-2xl"></i>
+        <div>
+          <p class="text-white font-medium text-sm">Deloitte &ndash; Data Analytics Job Simulation</p>
+          <p class="text-gray-400 text-xs">Jun 2025 &middot; Forage</p>
+        </div>
+      </div>
+      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
+        <i class="fas fa-trophy text-yellow-400 text-2xl"></i>
+        <div>
+          <p class="text-white font-medium text-sm">IdeaHub: Tech Ultimate Challenge Winner</p>
+          <p class="text-gray-400 text-xs">Aug 2024</p>
+        </div>
+      </div>
+      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
+        <i class="fas fa-hands-helping text-green-400 text-2xl"></i>
+        <div>
+          <p class="text-white font-medium text-sm">Community Service Volunteering (Teaching)</p>
+          <p class="text-gray-400 text-xs">Jun 2023</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Resume Section -->
   <section id="resume" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16 text-center text-gray-300">
@@ -717,14 +785,12 @@
       <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block mb-4">Get In Touch</h2>
     </div>
     <div class="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto">
-      <!-- Contact Information -->
       <div class="flex-1 bg-[#1e293b] rounded-lg p-8 shadow-lg text-gray-300">
         <h3 class="font-semibold text-lg mb-6 text-white">Contact Information</h3>
         <ul class="space-y-4">
           <li class="flex items-center gap-3">
-            <i class="fas fa-envelope text-cyan-400 text-lg w-6"></i> 
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shaha.tanisha@gmail.com&su=Hello%20Tanisha&body=I%20wanted%20to%20say%20hi!" aria-label="Email Tanisha Shaha"
-              class="hover:underline text-cyan-400">shaha.tanisha@gmail.com</a>
+            <i class="fas fa-envelope text-cyan-400 text-lg w-6"></i>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shaha.tanisha@gmail.com&su=Hello%20Tanisha&body=I%20wanted%20to%20say%20hi!" class="hover:underline text-cyan-400">shaha.tanisha@gmail.com</a>
           </li>
           <li class="flex items-center gap-3">
             <i class="fab fa-linkedin-in text-cyan-400 text-lg w-6"></i>
@@ -736,83 +802,36 @@
           </li>
         </ul>
         <hr class="my-6 border-gray-700" />
-       
       </div>
-     <!-- Contact Form -->
-<form 
-  id="contactForm"
-  action="https://formspree.io/f/moqprxyz" 
-  method="POST" 
-  class="flex-1 bg-[#1e293b] rounded-lg p-8 shadow-lg text-gray-300" 
-  aria-label="Send me a message form"
->
-  <h3 class="font-semibold text-lg mb-6 text-white">Send Me a Message</h3>
-
-  <!-- Full Name -->
-  <div class="mb-6 relative floating-label">
-    <input 
-      type="text" 
-      id="fullName" 
-      name="fullName" 
-      placeholder=" " 
-      required 
-      aria-required="true" 
-      aria-label="Full Name" 
-    />
-    <label for="fullName">Full Name *</label>
-  </div>
-
-  <!-- Email Address -->
-  <div class="mb-6 relative floating-label">
-    <input 
-      type="email" 
-      id="emailAddress" 
-      name="emailAddress" 
-      placeholder=" " 
-      required 
-      aria-required="true" 
-      aria-label="Email Address" 
-    />
-    <label for="emailAddress">Email Address *</label>
-  </div>
-
-  <!-- Subject -->
-  <div class="mb-6 relative floating-label">
-    <input 
-      type="text" 
-      id="subject" 
-      name="subject" 
-      placeholder=" " 
-      required 
-      aria-required="true" 
-      aria-label="Subject" 
-    />
-    <label for="subject">Subject *</label>
-  </div>
-
-  <!-- Message -->
-  <div class="mb-6 relative floating-label">
-    <textarea 
-      id="message" 
-      name="message" 
-      rows="4" 
-      placeholder=" " 
-      required 
-      aria-required="true" 
-      aria-label="Message" 
-      class="resize-y"
-    ></textarea>
-    <label for="message">Message *</label>
-  </div>
-
-  <button 
-    type="submit" 
-    class="w-full inline-flex justify-center items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-500 hover:to-blue-700 transition rounded-md py-3 font-semibold text-gray-900"
-  >
-    <i class="fas fa-paper-plane"></i> Send Message
-  </button>
-</form>
-
+      <form
+        id="contactForm"
+        action="https://formspree.io/f/moqprxyz"
+        method="POST"
+        class="flex-1 bg-[#1e293b] rounded-lg p-8 shadow-lg text-gray-300"
+        aria-label="Send me a message form"
+      >
+        <h3 class="font-semibold text-lg mb-6 text-white">Send Me a Message</h3>
+        <div class="mb-6 relative floating-label">
+          <input type="text" id="fullName" name="fullName" placeholder=" " required aria-required="true" aria-label="Full Name" />
+          <label for="fullName">Full Name *</label>
+        </div>
+        <div class="mb-6 relative floating-label">
+          <input type="email" id="emailAddress" name="emailAddress" placeholder=" " required aria-required="true" aria-label="Email Address" />
+          <label for="emailAddress">Email Address *</label>
+        </div>
+        <div class="mb-6 relative floating-label">
+          <input type="text" id="subject" name="subject" placeholder=" " required aria-required="true" aria-label="Subject" />
+          <label for="subject">Subject *</label>
+        </div>
+        <div class="mb-6 relative floating-label">
+          <textarea id="message" name="message" rows="4" placeholder=" " required aria-required="true" aria-label="Message" class="resize-y"></textarea>
+          <label for="message">Message *</label>
+        </div>
+        <button type="submit" class="w-full inline-flex justify-center items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-500 hover:to-blue-700 transition rounded-md py-3 font-semibold text-gray-900">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -820,7 +839,7 @@
     <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
       <div>
         <h4 class="text-white font-semibold mb-4">Tanisha Shaha</h4>
-        <p class="text-gray-400 text-xs">Passionate about building engaging <br>websites and mobile apps using modern <br> front-end technologies and always<br> eager to learn new tools.</p>
+        <p class="text-gray-400 text-xs">Frontend Developer Intern passionate about building engaging websites and mobile apps using modern technologies, always eager to learn and grow.</p>
       </div>
       <div>
         <h4 class="text-white font-semibold mb-4">Navigation</h4>
@@ -828,15 +847,18 @@
           <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
           <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
           <li><a href="#goals" class="hover:text-cyan-400 transition">Goals</a></li>
+          <li><a href="#experience" class="hover:text-cyan-400 transition">Experience</a></li>
           <li><a href="#projects" class="hover:text-cyan-400 transition">Projects</a></li>
           <li><a href="#skills" class="hover:text-cyan-400 transition">Skills</a></li>
+          <li><a href="#research" class="hover:text-cyan-400 transition">Research</a></li>
+          <li><a href="#awards" class="hover:text-cyan-400 transition">Awards</a></li>
           <li><a href="#resume" class="hover:text-cyan-400 transition">Resume</a></li>
           <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
         </ul>
       </div>
       <div>
         <h4 class="text-white font-semibold mb-4">Services</h4>
-        <p class="text-gray-400 text-xs">Creating web and mobile apps, with <br>focus  on modern UI/UX and engaging <br>user experiences.</p>
+        <p class="text-gray-400 text-xs">Frontend development, responsive web design, WordPress &amp; Laravel development, Android &amp; Flutter mobile apps, UI/UX focused interfaces.</p>
       </div>
       <div>
         <h4 class="text-white font-semibold mb-4">Contact</h4>
@@ -848,7 +870,7 @@
       </div>
     </div>
     <div class="border-t border-gray-800 mt-8 pt-4 text-center text-xs text-gray-600 max-w-7xl mx-auto">
-      © 2025 Tanisha Shaha. All rights reserved.
+      &copy; 2025 Tanisha Shaha. All rights reserved.
       <div class="mt-1 space-x-4">
         <a href="#" class="hover:text-cyan-400 transition">Privacy Policy</a>
         <a href="#" class="hover:text-cyan-400 transition">Terms of Service</a>
@@ -862,7 +884,73 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-    <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // --- Nav active link update on scroll ---
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll("nav a.nav-link");
+      const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+      window.addEventListener("scroll", () => {
+        const scrollY = window.pageYOffset;
+        sections.forEach((section) => {
+          const sectionHeight = section.offsetHeight;
+          const sectionTop = section.offsetTop - 60;
+          const sectionId = section.getAttribute("id");
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === "#" + sectionId) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+        // Toggle scroll-to-top button visibility
+        if (scrollTopBtn) {
+          scrollTopBtn.style.display = scrollY > 400 ? "block" : "none";
+        }
+      });
+
+      // Scroll to top on button click
+      if (scrollTopBtn) {
+        scrollTopBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      // --- Project filter buttons ---
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll("[data-category]");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const filter = btn.getAttribute("data-filter");
+          projectCards.forEach((card) => {
+            if (filter === "all" || card.getAttribute("data-category") === filter) {
+              card.style.display = "flex";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // --- Contact form submission to open Gmail compose ---
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = document.getElementById("emailAddress").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+          const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=shaha.tanisha@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
+          window.open(mailtoLink, "_blank");
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
