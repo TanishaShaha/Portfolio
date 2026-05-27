@@ -1,956 +1,705 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tanisha Shaha Portfolio</title>
-   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-  <style>
-    /* Background gradient layers */
-    body {
-      background: radial-gradient(ellipse at top left, #0c122f, transparent 30%),
-        radial-gradient(circle at bottom right, #36086c, #030515 100%);
-      min-height: 100vh;
-      color: #cbd5e1;
-      font-family: 'Inter', sans-serif;
-    }
-    .filter-btn {
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.375rem;
-      background-color: #1f2937;
-      color: #d1d5db;
-      transition: color 0.2s, background-color 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-    .filter-btn:hover {
-      color: #22d3ee;
-    }
-    .filter-btn.active {
-      background-color: #22d3ee;
-      color: #111827;
-      font-weight: 600;
-    }
-    .project-item {
-      background: #374151;
-      color: #fff;
-      padding: 1rem;
-      border-radius: 0.375rem;
-    }
-    .badge {
-      background: #1e3a4f;
-      color: #67e8f9;
-      border-radius: 0.375rem;
-      padding: 2px 8px;
-      font-size: 0.7rem;
-    }
-    /* Gradient underline for headings */
-    .gradient-underline {
-      position: relative;
-      display: inline-block;
-    }
-    .gradient-underline::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 100%;
-      height: 3px;
-      border-radius: 9999px;
-      background: linear-gradient(90deg, #22d3ee, #3b82f6);
-      box-shadow: 0 0 8px #22d3ee, 0 0 12px #3b82f6;
-    }
-    /* Floating label for inputs */
-    .floating-label input:focus + label,
-    .floating-label input:not(:placeholder-shown) + label,
-    .floating-label textarea:focus + label,
-    .floating-label textarea:not(:placeholder-shown) + label {
-      transform: translateY(-100%) scale(0.75);
-      color: #22d3ee;
-    }
-    .floating-label label {
-      pointer-events: none;
-      left: 12px;
-      top: 14px;
-      position: absolute;
-      color: #94a3b8;
-      transition: all 0.3s ease;
-      background: #1e293b;
-      padding: 0 4px;
-      font-size: 1rem;
-    }
-    .floating-label input,
-    .floating-label textarea {
-      background: #1e293b;
-      border-radius: 0.375rem;
-      border: 1px solid transparent;
-      padding: 14px 12px 6px;
-      color: #e2e8f0;
-      outline-offset: 2px;
-      width: 100%;
-      resize: vertical;
-    }
-    .floating-label input:focus,
-    .floating-label textarea:focus {
-      border-color: #22d3ee;
-      box-shadow: 0 0 6px #22d3ee;
-      outline: none;
-    }
-    /* Scrollbar for project filter buttons */
-    .scrollbar-hide::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-hide {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      overflow-x: auto;
-    }
-    /* Social icon round buttons on left */
-    .social-icons {
-      position: fixed;
-      bottom: 4rem;
-      left: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      z-index: 50;
-    }
-    .social-icons a {
-      background: #1e293b;
-      color: #94a3b8;
-      width: 2.75rem;
-      height: 2.75rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 9999px;
-      box-shadow: 0 0 4px #0f172a;
-      transition: color 0.3s ease, background-color 0.3s ease;
-    }
-    .social-icons a:hover {
-      background: #22d3ee;
-      color: #0c122f;
-      box-shadow: 0 0 10px #22d3ee;
-    }
-    /* Scroll to top button */
-    #scrollTopBtn {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      background: #22d3ee;
-      color: #0c122f;
-      border-radius: 9999px;
-      border: none;
-      padding: 0.75rem 1rem;
-      font-size: 1.25rem;
-      cursor: pointer;
-      box-shadow: 0 0 10px #22d3ee;
-      z-index: 60;
-      display: none;
-      transition: background-color 0.3s ease;
-    }
-    #scrollTopBtn:hover {
-      background: #3b82f6;
-    }
-    /* Navigation background & link active */
-    nav {
-      background-color: #0f172a;
-      box-shadow: 0 2px 8px rgb(13 27 54 / 0.7);
-      z-index: 100;
-    }
-    nav a {
-      transition: color 0.3s ease, background-color 0.3s ease;
-    }
-    nav a.active,
-    nav a:hover {
-      color: #22d3ee;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanisha Shaha — Frontend Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 </head>
-<body class="relative">
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Noise overlay -->
+  <div class="noise"></div>
 
   <!-- Navigation -->
-  <nav class="fixed top-0 left-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between h-14">
-      <a href="#home" class="text-cyan-400 font-semibold text-lg">Tanisha Shaha</a>
-      <ul class="hidden md:flex space-x-6 text-sm text-gray-300 font-medium">
-        <li><a href="#home" class="nav-link px-2 py-1 rounded-md active">Home</a></li>
-        <li><a href="#about" class="nav-link px-2 py-1 rounded-md">About</a></li>
-        <li><a href="#goals" class="nav-link px-2 py-1 rounded-md">Goals</a></li>
-        <li><a href="#experience" class="nav-link px-2 py-1 rounded-md">Experience</a></li>
-        <li><a href="#projects" class="nav-link px-2 py-1 rounded-md">Projects</a></li>
-        <li><a href="#skills" class="nav-link px-2 py-1 rounded-md">Skills</a></li>
-        <li><a href="#research" class="nav-link px-2 py-1 rounded-md">Research</a></li>
-        <li><a href="#awards" class="nav-link px-2 py-1 rounded-md">Awards</a></li>
-        <li><a href="#resume" class="nav-link px-2 py-1 rounded-md">Resume</a></li>
-        <li><a href="#contact" class="nav-link px-2 py-1 rounded-md">Contact</a></li>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">TS<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#awards" class="nav-link">Awards</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
+      <a href="Tanisha Shaha_CV.pdf" download class="nav-cta">Resume ↗</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="mob-link">Home</a>
+      <a href="#about" class="mob-link">About</a>
+      <a href="#experience" class="mob-link">Experience</a>
+      <a href="#projects" class="mob-link">Projects</a>
+      <a href="#skills" class="mob-link">Skills</a>
+      <a href="#research" class="mob-link">Research</a>
+      <a href="#awards" class="mob-link">Awards</a>
+      <a href="#contact" class="mob-link">Contact</a>
     </div>
   </nav>
 
-  <!-- Social Icons Left -->
-  <div class="social-icons">
-    <a href="https://github.com/TanishaShaha" target="_blank" rel="noopener" aria-label="GitHub profile">
-      <i class="fab fa-github fa-lg"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/tanisha-shaha" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-      <i class="fab fa-linkedin-in fa-lg"></i>
-    </a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shaha.tanisha@gmail.com&su=Hello%20Tanisha&body=I%20wanted%20to%20say%20hi!" aria-label="Email Tanisha Shaha">
-      <i class="fas fa-envelope fa-lg"></i>
-    </a>
-  </div>
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <!-- 3D canvas background -->
+    <canvas id="heroCanvas"></canvas>
 
-  <!-- Home Section -->
-  <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 sm:px-10 pt-20 sm:pt-28 pb-28">
-    <h2 class="text-xl text-cyan-400 mb-2">Hi, I'm Tanisha Shaha</h2>
-    <h1 class="text-4xl sm:text-5xl font-extrabold max-w-3xl text-gradient-cyan leading-tight">
-      <span class="text-cyan-400">I Build simple and user-friendly web and mobile applications.</span>
-    </h1>
-    <p class="max-w-xl mt-5 text-gray-300">
-      A final year Computer Engineering student and Frontend Developer Intern passionate about creating clean, modern digital experiences.
-    </p>
-    <div class="mt-8 space-x-4">
-      <a href="#projects" class="inline-block bg-gradient-to-r from-cyan-400 to-blue-600 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:from-cyan-500 hover:to-blue-700 transition">
-        View Projects &rarr;
-      </a>
-      <a href="#contact" class="inline-block border border-gray-400 px-6 py-3 rounded-full text-gray-300 font-semibold hover:text-white hover:border-cyan-400 transition">
-        Contact me
-      </a>
+    <!-- Floating blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-name reveal-up">
+        <span class="line">Tanisha</span>
+        <span class="line">Shaha</span>
+      </h1>
+      <div class="hero-role reveal-up">
+        <span class="role-text" id="roleText"></span><span class="cursor-blink">|</span>
+      </div>
+      <p class="hero-desc reveal-up">
+        Final‑year Computer Engineering student & Frontend Developer Intern crafting immersive, user‑first digital experiences.
+      </p>
+      <div class="hero-actions reveal-up">
+        <a href="#projects" class="btn btn-primary">
+          <span>View Projects</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      </div>
+
+      <!-- Floating tech pills -->
+      <div class="tech-pills reveal-up">
+        <span class="pill">Flutter</span>
+        <span class="pill">Laravel</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">Python</span>
+        <span class="pill">Firebase</span>
+      </div>
+    </div>
+
+    <!-- 3D card floating beside hero text -->
+    <div class="hero-card-wrap reveal-right">
+      <div class="hero-card" id="heroCard">
+        <div class="card-face">
+          <div class="card-avatar">
+            <img src="images/Profile.jpeg" alt="Tanisha Shaha" onerror="this.parentElement.innerHTML='<div class=\'avatar-fallback\'>TS</div>'" />
+          </div>
+          <div class="card-info">
+            <h3>Tanisha Shaha</h3>
+            <p>Frontend Developer Intern</p>
+            <div class="card-stats">
+              <div class="stat">
+                <span class="stat-num">10+</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">2</span>
+                <span class="stat-label">Papers</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">6+</span>
+                <span class="stat-label">Certs</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/TanishaShaha" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tanisha-shaha" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:shaha.tanisha@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="max-w-7xl mx-auto px-6 sm:px-10 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">About Me</h2>
-    </div>
-    <div class="flex flex-col md:flex-row gap-10 items-center md:items-start">
-      <div class="flex-shrink-0 rounded-lg overflow-hidden shadow-lg max-w-xs">
-        <img
-          src="images/Profile.jpeg"
-          alt="Profile"
-          class="w-full h-auto object-cover"
-          onerror="this.style.display='none'"
-        />
-        <div class="text-xs text-green-400 bg-[#122113] px-3 py-1 flex items-center gap-2">
-          <i class="fas fa-circle text-xs"></i> Available for work
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section about-section">
+    <div class="section-inner">
+      <div class="section-label reveal-up">About me</div>
+      <h2 class="section-title reveal-up">The human <span class="accent">behind</span> the code</h2>
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <p>Hello! I'm a final‑year <strong>Computer Engineering student at NMIMS, Navi Mumbai</strong>, currently working as a <strong>Frontend Developer Intern at CartGeek</strong>. I have hands‑on experience designing responsive, user‑friendly web interfaces using HTML, CSS, JavaScript, PHP, Laravel, and WordPress.</p>
+          <p>My passion lies in creating seamless digital experiences. I've built Android and Flutter‑based mobile apps across domains — from health & fitness to AI‑powered crop disease diagnosis. I thrive in collaborative, Agile environments.</p>
+          <p>As I approach graduation, I'm eager to apply my knowledge to real‑world challenges, craft experiences that are not only functional but genuinely delightful.</p>
+          <div class="about-meta">
+            <div class="meta-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Mumbai, India</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:shaha.tanisha@gmail.com">shaha.tanisha@gmail.com</a>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-circle status-green"></i>
+              <span class="status-text">Open to opportunities</span>
+            </div>
+          </div>
+        </div>
+        <div class="goals-grid reveal-right">
+          <div class="goal-card" data-tilt>
+            <div class="goal-icon"><i class="fas fa-rocket"></i></div>
+            <h4>Short‑Term</h4>
+            <p>Grow as a Frontend Developer delivering impactful, user‑focused solutions using HTML, CSS, JavaScript, Laravel, and mobile development.</p>
+          </div>
+          <div class="goal-card" data-tilt>
+            <div class="goal-icon"><i class="fas fa-road"></i></div>
+            <h4>Mid‑Term</h4>
+            <p>Evolve into a versatile developer with expertise in both frontend & backend, and intuitive UX design for data‑driven applications.</p>
+          </div>
+          <div class="goal-card" data-tilt>
+            <div class="goal-icon"><i class="fas fa-bullseye"></i></div>
+            <h4>Long‑Term</h4>
+            <p>Become a technical leader, mentor others, and build innovative products that combine technology and thoughtful design for positive impact.</p>
+          </div>
         </div>
       </div>
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg flex-1 text-gray-300 leading-relaxed text-sm md:text-base">
-        <p>
-          Hello! I am a final-year Computer Engineering student at NMIMS, Navi Mumbai, currently working as a Frontend Developer Intern at CartGeek. I have hands-on experience in designing and implementing responsive, user-friendly web interfaces using HTML, CSS, JavaScript, PHP, Laravel, and WordPress, with a growing focus on mobile app development and UI/UX design.
-        </p>
-        <p class="mt-4">
-          My passion lies in creating seamless, intuitive digital experiences. I've worked on production websites optimized for performance and consistency, and I've also built Android and Flutter-based mobile apps across various domains — from health and fitness to AI-powered crop disease diagnosis. I follow Agile methodologies and use Git for version control in collaborative environments.
-        </p>
-        <p class="mt-4">
-          As I approach graduation, I'm eager to apply my academic knowledge and hands-on experience to real-world challenges. I am a firm believer in lifelong learning and thrive in collaborative environments where I can contribute to a team's success while continuously growing my own skills. My goal is to craft digital experiences that are not only functional but also leave a lasting positive impression.
-        </p>
-        <div class="mt-6 grid grid-cols-2 gap-6 text-sm text-gray-400">
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="section">
+    <div class="section-inner">
+      <div class="section-label reveal-up">Work</div>
+      <h2 class="section-title reveal-up">Experience</h2>
+      <div class="timeline reveal-up">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body" data-tilt>
+            <div class="timeline-header">
+              <div>
+                <h3>Frontend Developer Intern</h3>
+                <p class="timeline-company">CartGeek &nbsp;·&nbsp; <em>VS Code, XAMPP</em></p>
+              </div>
+              <span class="timeline-date">Dec 2025 – Present</span>
+            </div>
+            <ul class="timeline-list">
+              <li>Led frontend development across high‑impact projects, implementing fully responsive and visually consistent interfaces, resulting in a <strong>15% improvement</strong> in user satisfaction scores.</li>
+              <li>Developed and optimized website frontends on WordPress and Laravel, leading to a <strong>10% reduction</strong> in page load times.</li>
+              <li>Implemented version control workflows using Git to manage code changes and maintain code integrity across projects.</li>
+              <li>Worked with HTML, CSS, JavaScript, and PHP to build and maintain scalable frontend features for production applications.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>HTML/CSS</span><span>JavaScript</span><span>PHP</span><span>Laravel</span><span>WordPress</span><span>Git</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section">
+    <div class="section-inner">
+      <div class="section-label reveal-up">Work</div>
+      <h2 class="section-title reveal-up">Featured <span class="accent">Projects</span></h2>
+      <!-- Filters -->
+      <div class="filter-row reveal-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="app">Mobile Apps</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="c++">C++</button>
+        <button class="filter-btn" data-filter="sql">SQL</button>
+      </div>
+      <!-- Grid -->
+      <div class="projects-grid" id="projectsGrid">
+
+        <div class="project-card" data-category="app" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/Prakriti.jpg" alt="Prakriti" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="#" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">Mobile App</span>
+              <span class="project-status in-progress">In Progress</span>
+            </div>
+            <h3>Prakriti</h3>
+            <p>Lightweight offline AI‑based app using EdgeViT‑S for crop disease detection on low‑end smartphones — no internet required.</p>
+            <div class="project-techs">
+              <span>Python</span><span>Java</span><span>SQLite</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Nov 2025</span>
+              <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card featured" data-category="app" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/SoulScript.jpg" alt="SoulScript" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://github.com/TanishaShaha/SoulScript---Journal-App" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">Flutter</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>SoulScript</h3>
+            <p>Flutter journaling app featuring daily reflections, affirmations, and sleep stories — promoting mindfulness with Firebase auth.</p>
+            <div class="project-techs">
+              <span>Flutter</span><span>Dart</span><span>Firebase</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> May–Jun 2025</span>
+              <a href="https://github.com/TanishaShaha/SoulScript---Journal-App" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="app" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/active_life.jpg" alt="ActiveLife" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://github.com/TanishaShaha/Active-Life" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">Android</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>ActiveLife</h3>
+            <p>Android fitness tracker with workout plans, meal tracking, BMI calculator, and step counter for a healthier lifestyle.</p>
+            <div class="project-techs">
+              <span>Java</span><span>SQLite</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Oct–Nov 2024</span>
+              <a href="https://github.com/TanishaShaha/Active-Life" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="app" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/Ransomware_Detector.png" alt="Ransomware Detector" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://github.com/TanishaShaha/RansomwareDetector" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">Python / AI</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>Ransomware Detector</h3>
+            <p>Windows GUI app integrating XGBoost to classify .exe files as benign or malicious in real time with network behavior analysis.</p>
+            <div class="project-techs">
+              <span>Python</span><span>XGBoost</span><span>Tkinter</span><span>PyShark</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Feb–Mar 2025</span>
+              <a href="https://github.com/TanishaShaha/RansomwareDetector" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="web" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/tasty_trails.jpg" alt="Tasty Trails" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://tanishashaha.github.io/Tasty-Trails/" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">Web</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>Tasty Trails</h3>
+            <p>Swiggy‑inspired web app letting users explore menus, discover dishes, and simulate placing food orders online.</p>
+            <div class="project-techs">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>AngularJS</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Feb 2024</span>
+              <a href="https://tanishashaha.github.io/Tasty-Trails/" target="_blank" class="project-link"><i class="fas fa-globe"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="web" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/ShopLingo.jpg" alt="ShopLingo" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://tanishashaha.github.io/Shoplingo/" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">Web</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>ShopLingo</h3>
+            <p>Web replica of the AJIO homepage showcasing stylish layouts and product displays with clean, modern design.</p>
+            <div class="project-techs">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> May 2024</span>
+              <a href="https://tanishashaha.github.io/Shoplingo/" target="_blank" class="project-link"><i class="fas fa-globe"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="c++" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/Movie_Ticket_Booking.png" alt="Movie Ticket Booking" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://github.com/TanishaShaha/movieticketbooking-system-c" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">C++</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>Movie Ticket Booking</h3>
+            <p>C++ system for browsing movies, selecting showtimes, choosing seats, and confirming ticket bookings seamlessly.</p>
+            <div class="project-techs">
+              <span>C++</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Oct 2022</span>
+              <a href="https://github.com/TanishaShaha/movieticketbooking-system-c" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="c++" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/railway.png" alt="Railway Reservation" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://github.com/TanishaShaha/Railway-Reservation-System" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">C++</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>Railway Reservation</h3>
+            <p>C++ program to search trains, book tickets, manage food preferences, and handle cancellations for seamless travel planning.</p>
+            <div class="project-techs">
+              <span>C++</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Nov 2023</span>
+              <a href="https://github.com/TanishaShaha/Railway-Reservation-System" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="python" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/expense_tracker.jpeg" alt="Expense Tracker" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://github.com/TanishaShaha/Smart-Expense-Tracker" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">Python</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>Expense Tracker</h3>
+            <p>Python application helping users monitor spending and visualize expenses through interactive charts and reports.</p>
+            <div class="project-techs">
+              <span>Python</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Jun 2024</span>
+              <a href="https://github.com/TanishaShaha/Smart-Expense-Tracker" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="sql" data-tilt>
+          <div class="project-img-wrap">
+            <img src="images/movie_ticket.png" alt="Movie Ticket SQL" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="project-overlay">
+              <a href="https://github.com/TanishaShaha/movie-ticket-booking-system-db-queries" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="project-tag">SQL</span>
+              <span class="project-status done">Completed</span>
+            </div>
+            <h3>Movie Ticket DB</h3>
+            <p>MySQL database to store and retrieve movie details, showtimes, and bookings for smooth ticket management.</p>
+            <div class="project-techs">
+              <span>MySQL</span><span>SQL</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date"><i class="fas fa-calendar-alt"></i> Mar 2024</span>
+              <a href="https://github.com/TanishaShaha/movie-ticket-booking-system-db-queries" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /projects-grid -->
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section skills-section">
+    <div class="section-inner">
+      <div class="section-label reveal-up">Toolkit</div>
+      <h2 class="section-title reveal-up">My <span class="accent">Skills</span></h2>
+      <div class="skills-container">
+        <div class="skill-group reveal-up">
+          <h3 class="skill-group-title"><i class="fas fa-laptop-code"></i> Frontend & Mobile</h3>
+          <div class="skill-items">
+            <div class="skill-item" data-tilt><img src="images/html.png" alt="HTML5" onerror="this.outerHTML='<div class=\'skill-fallback\'>HTML5</div>'" /><span>HTML5</span></div>
+            <div class="skill-item" data-tilt><img src="images/css.png" alt="CSS3" onerror="this.outerHTML='<div class=\'skill-fallback\'>CSS3</div>'" /><span>CSS3</span></div>
+            <div class="skill-item" data-tilt><img src="images/js.png" alt="JavaScript" onerror="this.outerHTML='<div class=\'skill-fallback\'>JS</div>'" /><span>JavaScript</span></div>
+            <div class="skill-item" data-tilt><img src="images/angularjs.png" alt="AngularJS" onerror="this.outerHTML='<div class=\'skill-fallback\'>Angular</div>'" /><span>AngularJS</span></div>
+            <div class="skill-item" data-tilt><img src="images/java.png" alt="Java" onerror="this.outerHTML='<div class=\'skill-fallback\'>Java</div>'" /><span>Java</span></div>
+            <div class="skill-item" data-tilt><img src="images/flutter.png" alt="Flutter" onerror="this.outerHTML='<div class=\'skill-fallback\'>Flutter</div>'" /><span>Flutter</span></div>
+            <div class="skill-item" data-tilt><img src="images/dart.png" alt="Dart" onerror="this.outerHTML='<div class=\'skill-fallback\'>Dart</div>'" /><span>Dart</span></div>
+          </div>
+        </div>
+        <div class="skill-group reveal-up" style="animation-delay:0.1s">
+          <h3 class="skill-group-title"><i class="fas fa-server"></i> Backend & Database</h3>
+          <div class="skill-items">
+            <div class="skill-item" data-tilt><img src="images/mysql.jpg" alt="MySQL" onerror="this.outerHTML='<div class=\'skill-fallback\'>MySQL</div>'" /><span>MySQL</span></div>
+            <div class="skill-item" data-tilt><img src="images/sqlite.png" alt="SQLite" onerror="this.outerHTML='<div class=\'skill-fallback\'>SQLite</div>'" /><span>SQLite</span></div>
+            <div class="skill-item" data-tilt><img src="images/firebase.png" alt="Firebase" onerror="this.outerHTML='<div class=\'skill-fallback\'>Firebase</div>'" /><span>Firebase</span></div>
+            <div class="skill-item" data-tilt><img src="images/laravel.png" alt="Laravel" onerror="this.outerHTML='<div class=\'skill-fallback\'>Laravel</div>'" /><span>Laravel</span></div>
+            <div class="skill-item" data-tilt><img src="images/wordpress.png" alt="WordPress" onerror="this.outerHTML='<div class=\'skill-fallback\'>WordPress</div>'" /><span>WordPress</span></div>
+            <div class="skill-item" data-tilt><img src="images/php.png" alt="PHP" onerror="this.outerHTML='<div class=\'skill-fallback\'>PHP</div>'" /><span>PHP</span></div>
+          </div>
+        </div>
+        <div class="skill-group reveal-up" style="animation-delay:0.2s">
+          <h3 class="skill-group-title"><i class="fas fa-tools"></i> Tools & Methods</h3>
+          <div class="skill-items">
+            <div class="skill-item" data-tilt><img src="images/android_studio.png" alt="Android Studio" onerror="this.outerHTML='<div class=\'skill-fallback\'>AS</div>'" /><span>Android Studio</span></div>
+            <div class="skill-item" data-tilt><img src="images/visual_studio.png" alt="VS Code" onerror="this.outerHTML='<div class=\'skill-fallback\'>VS Code</div>'" /><span>VS Code</span></div>
+            <div class="skill-item" data-tilt><img src="images/figma.png" alt="Figma" onerror="this.outerHTML='<div class=\'skill-fallback\'>Figma</div>'" /><span>Figma</span></div>
+            <div class="skill-item" data-tilt><img src="images/git.png" alt="Git" onerror="this.outerHTML='<div class=\'skill-fallback\'>Git</div>'" /><span>Git</span></div>
+            <div class="skill-item" data-tilt><img src="images/tableau.jpg" alt="Tableau" onerror="this.outerHTML='<div class=\'skill-fallback\'>Tableau</div>'" /><span>Tableau</span></div>
+            <div class="skill-item" data-tilt><img src="images/xampp.png" alt="XAMPP" onerror="this.outerHTML='<div class=\'skill-fallback\'>XAMPP</div>'" /><span>XAMPP</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESEARCH ===== -->
+  <section id="research" class="section">
+    <div class="section-inner">
+      <div class="section-label reveal-up">Publications</div>
+      <h2 class="section-title reveal-up">Research <span class="accent">Papers</span></h2>
+      <div class="research-grid">
+        <div class="research-card reveal-left" data-tilt>
+          <div class="research-icon"><i class="fas fa-seedling"></i></div>
+          <div class="research-body">
+            <span class="research-conf">ICNTE — 6th Biennial International Conference on Nascent Technologies in Engineering</span>
+            <h3>Prakriti: An Offline Mobile Application for Crop Disease Diagnosis</h3>
+            <p>A lightweight offline crop disease diagnosis system optimized for low‑end smartphones using the EdgeViT‑S model — enabling AI‑powered agriculture in connectivity‑limited regions.</p>
+            <div class="research-tags"><span>EdgeViT-S</span><span>Python</span><span>Offline AI</span><span>Agriculture</span></div>
+          </div>
+        </div>
+        <div class="research-card reveal-right" data-tilt>
+          <div class="research-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="research-body">
+            <span class="research-conf">NTAI — Nextgen Technology and AI for Sustainable Future Conference</span>
+            <h3>Ransomware Detection using Network Features in Windows Environments</h3>
+            <p>Developed a real‑time ransomware detection system using XGBoost with a lightweight Windows GUI, analyzing network behavior to accurately classify executable files.</p>
+            <div class="research-tags"><span>XGBoost</span><span>Cybersecurity</span><span>Network Analysis</span><span>ML</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AWARDS ===== -->
+  <section id="awards" class="section">
+    <div class="section-inner">
+      <div class="section-label reveal-up">Recognition</div>
+      <h2 class="section-title reveal-up">Awards & <span class="accent">Certifications</span></h2>
+      <div class="awards-grid reveal-up">
+        <div class="award-card" data-tilt>
+          <i class="fas fa-award award-icon gold"></i>
           <div>
-            <div><strong class="text-gray-300">Name</strong><br />Tanisha Shaha</div>
-            <div class="mt-4"><strong class="text-gray-300">Location</strong><br />Mumbai</div>
+            <h4>AWS Academy Cloud Architecting</h4>
+            <span>Oct 2025</span>
           </div>
+        </div>
+        <div class="award-card" data-tilt>
+          <i class="fas fa-certificate award-icon cyan"></i>
           <div>
-            <div><strong class="text-gray-300">Email</strong><br /><a href="mailto:shaha.tanisha@gmail.com" class="hover:underline text-cyan-400">shaha.tanisha@gmail.com</a></div>
-            <div class="mt-4"><strong class="text-gray-300">Availability</strong><br /><span class="text-green-400 font-semibold">Open to opportunities</span></div>
+            <h4>Microsoft Learn – Intro to AI in Azure</h4>
+            <span>Jul 2025</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Goals Section -->
-  <section id="goals" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Career Goals</h2>
-    </div>
-    <div class="grid gap-8 md:grid-cols-3 text-gray-300 text-sm sm:text-base">
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg border border-transparent hover:border-cyan-400 transition">
-        <div class="flex items-center mb-3 text-cyan-400"><i class="fas fa-rocket fa-lg mr-2"></i><h3 class="font-semibold">Short-Term Goal</h3></div>
-        <p>
-          To grow as a Frontend Developer by applying my skills in HTML, CSS, JavaScript, Laravel, and mobile development to deliver impactful, user-focused digital solutions in a professional environment.
-        </p>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg border border-transparent hover:border-cyan-400 transition">
-        <div class="flex items-center mb-3 text-cyan-400"><i class="fas fa-road fa-lg mr-2"></i><h3 class="font-semibold">Mid-Term Goal</h3></div>
-        <p>
-          To grow into a versatile developer, taking on more complex projects, strengthening my expertise in both frontend and backend development, and gaining experience in designing intuitive user experiences and data-driven applications.
-        </p>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg border border-transparent hover:border-cyan-400 transition">
-        <div class="flex items-center mb-3 text-cyan-400"><i class="fas fa-bullseye fa-lg mr-2"></i><h3 class="font-semibold">Long-Term Goal</h3></div>
-        <p>
-          To become a technical leader, contributing to innovative products, mentoring others, and helping shape solutions that combine technology and thoughtful design to make a positive impact.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section (NEW) -->
-  <section id="experience" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Experience</h2>
-    </div>
-    <div class="max-w-4xl mx-auto">
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg text-gray-300 border border-transparent hover:border-cyan-400 transition">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+        <div class="award-card" data-tilt>
+          <i class="fas fa-certificate award-icon cyan"></i>
           <div>
-            <h3 class="text-cyan-400 font-semibold text-lg">Frontend Developer Intern</h3>
-            <p class="text-gray-400 text-sm font-medium">CartGeek &nbsp;&middot;&nbsp; <span class="text-xs text-gray-500">VS Code, XAMPP</span></p>
-          </div>
-          <span class="text-xs text-gray-400 mt-1 sm:mt-0">Dec 2025 &ndash; Present</span>
-        </div>
-        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300">
-          <li>Led frontend development across high-impact projects, implementing fully responsive and visually consistent interfaces, resulting in a 15% improvement in user satisfaction scores.</li>
-          <li>Developed and optimized website frontends on WordPress and Laravel, including UI implementation and alignment adjustments, leading to a 10% reduction in page load times.</li>
-          <li>Implemented version control workflows using Git to manage code changes and maintain code integrity across projects.</li>
-          <li>Worked with HTML, CSS, JavaScript, and PHP to build and maintain scalable frontend features for production applications.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
-    <div class="text-center mb-6">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Featured Projects</h2>
-    </div>
-    <!-- Filter Buttons -->
-    <div class="flex flex-wrap justify-center gap-3 mb-8 scrollbar-hide">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="app">Mobile Apps</button>
-      <button class="filter-btn" data-filter="web">Web</button>
-      <button class="filter-btn" data-filter="python">Python</button>
-      <button class="filter-btn" data-filter="c++">C++</button>
-      <button class="filter-btn" data-filter="sql">SQL</button>
-    </div>
-    <div class="grid gap-8 md:grid-cols-3">
-
-      <!-- Project Card 1 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img src="images/Prakriti.jpg" alt="Prakriti" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">Prakriti</h3>
-        <p class="text-sm mb-3">
-          A lightweight offline AI-based mobile application using the EdgeViT-S model for crop disease detection on low-end smartphones — enabling farmers to diagnose diseases and receive treatment solutions without internet connectivity.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Nov 2025</span>
-          <span>&#9889; Status: <span class="text-blue-500 font-semibold">In Progress</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">Python</span>
-          <span class="badge">Java</span>
-          <span class="badge">SQLite</span>
-        </div>
-        <a href="#" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-      <!-- Project Card 2 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img src="images/SoulScript.jpg" alt="SoulScript" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">SoulScript</h3>
-        <p class="text-sm mb-3">
-          A Flutter-based journaling app featuring daily reflections, affirmations, and sleep stories — designed to promote mindfulness and mental well-being with Firebase-backed authentication and data storage.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; May 2025 &ndash; Jun 2025</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">Flutter</span>
-          <span class="badge">Dart</span>
-          <span class="badge">Firebase</span>
-        </div>
-        <a href="https://github.com/TanishaShaha/SoulScript---Journal-App" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-      <!-- Project Card 3 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img src="images/active_life.jpg" alt="ActiveLife" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">ActiveLife - Fitness Tracker App</h3>
-        <p class="text-sm mb-3">
-          An Android app featuring workout plans, meal tracking, BMI calculator, and step counter with an intuitive interface and personalized progress tracking for a healthier, active lifestyle.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Oct 2024 &ndash; Nov 2024</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">Java</span>
-          <span class="badge">SQLite</span>
-        </div>
-        <a href="https://github.com/TanishaShaha/Active-Life" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-      <!-- Project Card 4 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="app" tabindex="0">
-        <img src="images/Ransomware_Detector.png" alt="Ransomware Detector" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">Ransomware Detector In Windows</h3>
-        <p class="text-sm mb-3">
-          A lightweight Windows GUI application integrating an XGBoost model to classify .exe files as benign or malicious in real time, with network behavior analysis for improved detection efficiency.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Feb 2025 &ndash; Mar 2025</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">Python</span>
-          <span class="badge">XGBoost</span>
-          <span class="badge">Tkinter</span>
-          <span class="badge">Wireshark</span>
-          <span class="badge">PyShark</span>
-          <span class="badge">VirtualBox</span>
-        </div>
-        <a href="https://github.com/TanishaShaha/RansomwareDetector" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-      <!-- Project Card 5 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="web" tabindex="0">
-        <img src="images/tasty_trails.jpg" alt="Tasty Trails" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">Tasty Trails</h3>
-        <p class="text-sm mb-3">
-          A web app inspired by Swiggy, letting users explore menus, discover dishes, and simulate placing food orders online.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Feb 2024</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">HTML</span>
-          <span class="badge">CSS</span>
-          <span class="badge">JavaScript</span>
-          <span class="badge">AngularJS</span>
-        </div>
-        <a href="https://tanishashaha.github.io/Tasty-Trails/" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Demo
-        </a>
-      </div>
-
-      <!-- Project Card 6 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="web" tabindex="0">
-        <img src="images/ShopLingo.jpg" alt="ShopLingo" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:contain;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">ShopLingo</h3>
-        <p class="text-sm mb-3">
-          A web replica of the AJIO homepage, showcasing stylish layouts and product displays using HTML, CSS, and JavaScript.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; May 2024</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">HTML</span>
-          <span class="badge">CSS</span>
-          <span class="badge">JavaScript</span>
-        </div>
-        <a href="https://tanishashaha.github.io/Shoplingo/" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Demo
-        </a>
-      </div>
-
-      <!-- Project Card 7 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="c++" tabindex="0">
-        <img src="images/Movie_Ticket_Booking.png" alt="Movie Ticket Booking System" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">Movie Ticket Booking System</h3>
-        <p class="text-sm mb-3">
-          A C++ system that lets users browse movies, select showtimes, choose seats, and confirm ticket bookings seamlessly.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Oct 2022</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">C++</span>
-        </div>
-        <a href="https://github.com/TanishaShaha/movieticketbooking-system-c" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-      <!-- Project Card 8 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="c++" tabindex="0">
-        <img src="images/railway.png" alt="Railway" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">Railway Reservation System</h3>
-        <p class="text-sm mb-3">
-          A C++ program that allows users to search trains, book tickets, manage food preferences, and handle cancellations for seamless rail travel planning.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Nov 2023</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">C++</span>
-        </div>
-        <a href="https://github.com/TanishaShaha/Railway-Reservation-System" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-      <!-- Project Card 9 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="python" tabindex="0">
-        <img src="images/expense_tracker.jpeg" alt="Expense Tracker" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">Expense Tracker</h3>
-        <p class="text-sm mb-3">
-          A Python application that helps users monitor spending and visualize expenses through interactive charts and reports.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Jun 2024</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">Python</span>
-        </div>
-        <a href="https://github.com/TanishaShaha/Smart-Expense-Tracker" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-      <!-- Project Card 10 -->
-      <div class="bg-[#1e293b] rounded-lg shadow-lg p-6 flex flex-col text-gray-300" data-category="sql" tabindex="0">
-        <img src="images/movie_ticket.png" alt="Movie Ticket Booking System (SQL)" class="rounded-md mb-4 object-cover object-center h-48 w-full"
-          style="height:200px;width:300px;object-fit:cover;object-position:center;border-radius:8px;margin:0 auto 1rem auto;"
-          onerror="this.style.display='none'" />
-        <h3 class="text-cyan-400 font-semibold text-lg mb-1">Movie Ticket Booking System (SQL)</h3>
-        <p class="text-sm mb-3">
-          A MySQL database to store and retrieve movie details, showtimes, and bookings for smooth ticket management.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-3 text-xs text-gray-400">
-          <span>&#128197; Mar 2024</span>
-          <span>&#9889; Status: <span class="text-green-500 font-semibold">Completed</span></span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-4 text-xs text-gray-400">
-          <span class="badge">SQL</span>
-        </div>
-        <a href="https://github.com/TanishaShaha/movie-ticket-booking-system-db-queries" class="mt-auto inline-block bg-gradient-to-r from-cyan-400 to-blue-600 text-gray-900 font-semibold px-4 py-2 rounded-md hover:from-cyan-500 hover:to-blue-700 transition text-center">
-          <i class="fas fa-code mr-2"></i> View Code
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">My Skills</h2>
-    </div>
-    <div class="grid gap-8 md:grid-cols-3 text-gray-300">
-
-      <!-- Frontend and Mobile Development -->
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg">
-        <h3 class="mb-6 font-semibold text-lg text-white">Frontend &amp; Mobile Development</h3>
-        <div class="grid grid-cols-4 gap-4">
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/html.png" alt="HTML5 Logo" class="h-10 w-10 object-contain" />
-            <span class="text-xs">HTML5</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/css.png" alt="CSS3 Logo" class="h-10 w-13 object-contain" />
-            <span class="text-xs">CSS3</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/js.png" alt="JavaScript Logo" class="h-10 w-14 object-contain" />
-            <span class="text-xs">JavaScript</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/angularjs.png" alt="AngularJS Logo" class="h-10 w-14 object-contain" />
-            <span class="text-xs">AngularJS</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/xml.png" alt="XML Logo" class="h-10 w-14 object-contain" />
-            <span class="text-xs">XML</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/java.png" alt="Java" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Java</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/flutter.png" alt="Flutter Logo" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Flutter<br>(Learning)</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/dart.png" alt="Dart Logo" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Dart<br>(Learning)</span>
+            <h4>TATA – GenAI Powered Data Analytics</h4>
+            <span>Jun 2025 · Forage</span>
           </div>
         </div>
-      </div>
-
-      <!-- Backend & Database -->
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg">
-        <h3 class="mb-6 font-semibold text-lg text-white">Backend &amp; Database</h3>
-        <div class="grid grid-cols-4 gap-4">
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/mysql.jpg" alt="MySQL Logo" class="h-10 w-14 object-contain" />
-            <span class="text-xs">MySQL</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/sqlite.png" alt="SQLite" class="h-10 w-14 object-contain" />
-            <span class="text-xs">SQLite</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/firebase.png" alt="Firebase" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Firebase<br>(Learning)</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/laravel.png" alt="Laravel" class="h-10 w-14 object-contain"
-              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-red-700 rounded text-white text-xs font-bold&quot;&gt;L&lt;/div&gt;'" />
-            <span class="text-xs">Laravel</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/wordpress.png" alt="WordPress" class="h-10 w-14 object-contain"
-              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-blue-800 rounded text-white text-xs font-bold&quot;&gt;WP&lt;/div&gt;'" />
-            <span class="text-xs">WordPress</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/php.png" alt="PHP" class="h-10 w-14 object-contain"
-              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-indigo-700 rounded text-white text-xs font-bold&quot;&gt;PHP&lt;/div&gt;'" />
-            <span class="text-xs">PHP</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tools & Methodologies -->
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg">
-        <h3 class="mb-6 font-semibold text-lg text-white">Tools &amp; Methodologies</h3>
-        <div class="grid grid-cols-3 gap-6">
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/android_studio.png" alt="Android Studio" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Android Studio</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/visual_studio.png" alt="Visual Studio Code" class="h-10 w-14 object-contain" />
-            <span class="text-xs">VS Code</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/figma.png" alt="Figma" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Figma</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/responsive_web_design.png" alt="Responsive Web Design" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Responsiveness<br>(Learning)</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/tableau.jpg" alt="Tableau" class="h-10 w-14 object-contain" />
-            <span class="text-xs">Tableau</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/git.png" alt="Git" class="h-10 w-14 object-contain"
-              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-orange-700 rounded text-white text-xs font-bold&quot;&gt;Git&lt;/div&gt;'" />
-            <span class="text-xs">Git</span>
-          </div>
-          <div class="flex flex-col items-center gap-2 text-center">
-            <img src="images/xampp.png" alt="XAMPP" class="h-10 w-14 object-contain"
-              onerror="this.outerHTML='&lt;div class=&quot;h-10 w-10 flex items-center justify-center bg-orange-500 rounded text-white text-xs font-bold&quot;&gt;XAMPP&lt;/div&gt;'" />
-            <span class="text-xs">XAMPP</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Research Papers Section (NEW) -->
-  <section id="research" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Research Papers</h2>
-    </div>
-    <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg text-gray-300 border border-transparent hover:border-cyan-400 transition">
-        <div class="flex items-start gap-3 mb-3">
-          <i class="fas fa-file-alt text-cyan-400 text-xl mt-1"></i>
+        <div class="award-card" data-tilt>
+          <i class="fas fa-certificate award-icon cyan"></i>
           <div>
-            <h3 class="text-white font-semibold">Prakriti: An Offline Mobile Application for Crop Disease Diagnosis</h3>
-            <p class="text-cyan-400 text-xs mt-1">6th Biennial International Conference on Nascent Technologies in Engineering (ICNTE)</p>
+            <h4>Deloitte – Data Analytics Job Simulation</h4>
+            <span>Jun 2025 · Forage</span>
           </div>
         </div>
-        <p class="text-sm text-gray-400">
-          Research focused on a lightweight offline crop disease diagnosis system optimized for low-end smartphones using the EdgeViT-S model — enabling AI-powered agriculture in connectivity-limited regions.
-        </p>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-6 shadow-lg text-gray-300 border border-transparent hover:border-cyan-400 transition">
-        <div class="flex items-start gap-3 mb-3">
-          <i class="fas fa-file-alt text-cyan-400 text-xl mt-1"></i>
+        <div class="award-card" data-tilt>
+          <i class="fas fa-trophy award-icon gold"></i>
           <div>
-            <h3 class="text-white font-semibold">Ransomware Detection using Network Features in Windows Environments</h3>
-            <p class="text-cyan-400 text-xs mt-1">Nextgen Technology and AI for Sustainable Future (NTAI) Conference</p>
+            <h4>IdeaHub: Tech Ultimate Challenge Winner</h4>
+            <span>Aug 2024</span>
           </div>
         </div>
-        <p class="text-sm text-gray-400">
-          Developed a real-time ransomware detection system using XGBoost with a lightweight Windows GUI application, analyzing network behavior to accurately classify executable files.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Awards & Certifications Section (NEW) -->
-  <section id="awards" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block">Awards &amp; Certifications</h2>
-    </div>
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
-        <i class="fas fa-award text-yellow-400 text-2xl"></i>
-        <div>
-          <p class="text-white font-medium text-sm">AWS Academy Cloud Architecting</p>
-          <p class="text-gray-400 text-xs">Oct 2025</p>
-        </div>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
-        <i class="fas fa-certificate text-cyan-400 text-2xl"></i>
-        <div>
-          <p class="text-white font-medium text-sm">Microsoft Learn &ndash; Introduction to AI in Azure</p>
-          <p class="text-gray-400 text-xs">Jul 2025</p>
-        </div>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
-        <i class="fas fa-certificate text-cyan-400 text-2xl"></i>
-        <div>
-          <p class="text-white font-medium text-sm">TATA &ndash; GenAI Powered Data Analytics Job Simulation</p>
-          <p class="text-gray-400 text-xs">Jun 2025 &middot; Forage</p>
-        </div>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
-        <i class="fas fa-certificate text-cyan-400 text-2xl"></i>
-        <div>
-          <p class="text-white font-medium text-sm">Deloitte &ndash; Data Analytics Job Simulation</p>
-          <p class="text-gray-400 text-xs">Jun 2025 &middot; Forage</p>
-        </div>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
-        <i class="fas fa-trophy text-yellow-400 text-2xl"></i>
-        <div>
-          <p class="text-white font-medium text-sm">IdeaHub: Tech Ultimate Challenge Winner</p>
-          <p class="text-gray-400 text-xs">Aug 2024</p>
-        </div>
-      </div>
-      <div class="bg-[#1e293b] rounded-lg p-4 shadow-lg flex items-center gap-4 border border-transparent hover:border-cyan-400 transition">
-        <i class="fas fa-hands-helping text-green-400 text-2xl"></i>
-        <div>
-          <p class="text-white font-medium text-sm">Community Service Volunteering (Teaching)</p>
-          <p class="text-gray-400 text-xs">Jun 2023</p>
+        <div class="award-card" data-tilt>
+          <i class="fas fa-hands-helping award-icon green"></i>
+          <div>
+            <h4>Community Service Volunteering (Teaching)</h4>
+            <span>Jun 2023</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Resume Section -->
-  <section id="resume" class="max-w-7xl mx-auto px-6 sm:px-10 pb-16 text-center text-gray-300">
-    <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block mb-4">Resume</h2>
-    <p class="max-w-xl mx-auto mb-8">
-      Take a look at my professional experience and skills. You can view it directly in your browser or download a PDF copy for your convenience.
-    </p>
-    <div class="flex justify-center gap-4">
-      <a href="Tanisha Shaha_CV.pdf" download class="inline-flex items-center gap-2 px-6 py-3 bg-gray-700 rounded-md shadow-lg text-gray-300 font-semibold hover:bg-gray-600 transition">
-        <i class="fas fa-file-download"></i> Download CV (.pdf)
-      </a>
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section contact-section">
+    <div class="section-inner">
+      <div class="section-label reveal-up">Say hello</div>
+      <h2 class="section-title reveal-up">Get In <span class="accent">Touch</span></h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great.</p>
+          <div class="contact-links">
+            <a href="mailto:shaha.tanisha@gmail.com" class="contact-link-item">
+              <div class="clink-icon"><i class="fas fa-envelope"></i></div>
+              <div><span>Email</span><strong>shaha.tanisha@gmail.com</strong></div>
+            </a>
+            <a href="https://linkedin.com/in/tanisha-shaha" target="_blank" class="contact-link-item">
+              <div class="clink-icon"><i class="fab fa-linkedin-in"></i></div>
+              <div><span>LinkedIn</span><strong>tanisha-shaha</strong></div>
+            </a>
+            <a href="https://github.com/TanishaShaha" target="_blank" class="contact-link-item">
+              <div class="clink-icon"><i class="fab fa-github"></i></div>
+              <div><span>GitHub</span><strong>TanishaShaha</strong></div>
+            </a>
+          </div>
+          <a href="Tanisha Shaha_CV.pdf" download class="btn btn-primary" style="margin-top:2rem;display:inline-flex;">
+            <i class="fas fa-file-download"></i>
+            <span>Download Resume</span>
+          </a>
+        </div>
+        <form id="contactForm" class="contact-form reveal-right">
+          <div class="form-field">
+            <input type="text" id="fullName" name="fullName" placeholder=" " required />
+            <label for="fullName">Full Name</label>
+          </div>
+          <div class="form-field">
+            <input type="email" id="emailAddress" name="emailAddress" placeholder=" " required />
+            <label for="emailAddress">Email Address</label>
+          </div>
+          <div class="form-field">
+            <input type="text" id="subject" name="subject" placeholder=" " required />
+            <label for="subject">Subject</label>
+          </div>
+          <div class="form-field">
+            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Message</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            <i class="fas fa-paper-plane"></i>
+            <span>Send Message</span>
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i> Message sent! Opening Gmail…
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="max-w-7xl mx-auto px-6 sm:px-10 pb-20">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl font-extrabold text-white gradient-underline inline-block mb-4">Get In Touch</h2>
-    </div>
-    <div class="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto">
-      <div class="flex-1 bg-[#1e293b] rounded-lg p-8 shadow-lg text-gray-300">
-        <h3 class="font-semibold text-lg mb-6 text-white">Contact Information</h3>
-        <ul class="space-y-4">
-          <li class="flex items-center gap-3">
-            <i class="fas fa-envelope text-cyan-400 text-lg w-6"></i>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shaha.tanisha@gmail.com&su=Hello%20Tanisha&body=I%20wanted%20to%20say%20hi!" class="hover:underline text-cyan-400">shaha.tanisha@gmail.com</a>
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="fab fa-linkedin-in text-cyan-400 text-lg w-6"></i>
-            <a href="https://linkedin.com/in/tanisha-shaha" target="_blank" rel="noopener" class="hover:underline text-cyan-400">linkedin.com/in/tanisha-shaha</a>
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="fab fa-github text-cyan-400 text-lg w-6"></i>
-            <a href="https://github.com/TanishaShaha" target="_blank" rel="noopener" class="hover:underline text-cyan-400">github.com/TanishaShaha</a>
-          </li>
-        </ul>
-        <hr class="my-6 border-gray-700" />
-      </div>
-      <form
-        id="contactForm"
-        action="https://formspree.io/f/moqprxyz"
-        method="POST"
-        class="flex-1 bg-[#1e293b] rounded-lg p-8 shadow-lg text-gray-300"
-        aria-label="Send me a message form"
-      >
-        <h3 class="font-semibold text-lg mb-6 text-white">Send Me a Message</h3>
-        <div class="mb-6 relative floating-label">
-          <input type="text" id="fullName" name="fullName" placeholder=" " required aria-required="true" aria-label="Full Name" />
-          <label for="fullName">Full Name *</label>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="nav-logo">TS<span class="dot">.</span></span>
+          <p>Frontend Developer & CS Engineer crafting modern digital experiences from Mumbai, India.</p>
         </div>
-        <div class="mb-6 relative floating-label">
-          <input type="email" id="emailAddress" name="emailAddress" placeholder=" " required aria-required="true" aria-label="Email Address" />
-          <label for="emailAddress">Email Address *</label>
+        <div class="footer-nav">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
         </div>
-        <div class="mb-6 relative floating-label">
-          <input type="text" id="subject" name="subject" placeholder=" " required aria-required="true" aria-label="Subject" />
-          <label for="subject">Subject *</label>
+        <div class="footer-social">
+          <h5>Connect</h5>
+          <div class="social-row">
+            <a href="https://github.com/TanishaShaha" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tanisha-shaha" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:shaha.tanisha@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
-        <div class="mb-6 relative floating-label">
-          <textarea id="message" name="message" rows="4" placeholder=" " required aria-required="true" aria-label="Message" class="resize-y"></textarea>
-          <label for="message">Message *</label>
-        </div>
-        <button type="submit" class="w-full inline-flex justify-center items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-500 hover:to-blue-700 transition rounded-md py-3 font-semibold text-gray-900">
-          <i class="fas fa-paper-plane"></i> Send Message
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-[#0f172a] text-gray-500 py-8 px-6 sm:px-10 text-sm">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
-      <div>
-        <h4 class="text-white font-semibold mb-4">Tanisha Shaha</h4>
-        <p class="text-gray-400 text-xs">Frontend Developer Intern passionate about building engaging websites and mobile apps using modern technologies, always eager to learn and grow.</p>
       </div>
-      <div>
-        <h4 class="text-white font-semibold mb-4">Navigation</h4>
-        <ul class="space-y-2">
-          <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
-          <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
-          <li><a href="#goals" class="hover:text-cyan-400 transition">Goals</a></li>
-          <li><a href="#experience" class="hover:text-cyan-400 transition">Experience</a></li>
-          <li><a href="#projects" class="hover:text-cyan-400 transition">Projects</a></li>
-          <li><a href="#skills" class="hover:text-cyan-400 transition">Skills</a></li>
-          <li><a href="#research" class="hover:text-cyan-400 transition">Research</a></li>
-          <li><a href="#awards" class="hover:text-cyan-400 transition">Awards</a></li>
-          <li><a href="#resume" class="hover:text-cyan-400 transition">Resume</a></li>
-          <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-semibold mb-4">Services</h4>
-        <p class="text-gray-400 text-xs">Frontend development, responsive web design, WordPress &amp; Laravel development, Android &amp; Flutter mobile apps, UI/UX focused interfaces.</p>
-      </div>
-      <div>
-        <h4 class="text-white font-semibold mb-4">Contact</h4>
-        <ul class="space-y-2 text-xs">
-          <li class="flex items-center gap-2"><i class="fas fa-envelope text-gray-400"></i> shaha.tanisha@gmail.com</li>
-          <li class="flex items-center gap-2"><i class="fab fa-github text-gray-400"></i> github.com/TanishaShaha</li>
-          <li class="flex items-center gap-2"><i class="fab fa-linkedin-in text-gray-400"></i> linkedin.com/in/tanisha-shaha</li>
-        </ul>
-      </div>
-    </div>
-    <div class="border-t border-gray-800 mt-8 pt-4 text-center text-xs text-gray-600 max-w-7xl mx-auto">
-      &copy; 2025 Tanisha Shaha. All rights reserved.
-      <div class="mt-1 space-x-4">
-        <a href="#" class="hover:text-cyan-400 transition">Privacy Policy</a>
-        <a href="#" class="hover:text-cyan-400 transition">Terms of Service</a>
-        <a href="#" class="hover:text-cyan-400 transition">Cookies</a>
+      <div class="footer-bottom">
+        <span>© 2025 Tanisha Shaha. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
-  <!-- Scroll To Top Button -->
+  <!-- Scroll to top -->
   <button id="scrollTopBtn" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // --- Nav active link update on scroll ---
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll("nav a.nav-link");
-      const scrollTopBtn = document.getElementById("scrollTopBtn");
+  <!-- Fixed socials -->
+  <div class="fixed-socials">
+    <a href="https://github.com/TanishaShaha" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/tanisha-shaha" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="mailto:shaha.tanisha@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    <div class="socials-line"></div>
+  </div>
 
-      window.addEventListener("scroll", () => {
-        const scrollY = window.pageYOffset;
-        sections.forEach((section) => {
-          const sectionHeight = section.offsetHeight;
-          const sectionTop = section.offsetTop - 60;
-          const sectionId = section.getAttribute("id");
-          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach((link) => {
-              link.classList.remove("active");
-              if (link.getAttribute("href") === "#" + sectionId) {
-                link.classList.add("active");
-              }
-            });
-          }
-        });
-        // Toggle scroll-to-top button visibility
-        if (scrollTopBtn) {
-          scrollTopBtn.style.display = scrollY > 400 ? "block" : "none";
-        }
-      });
-
-      // Scroll to top on button click
-      if (scrollTopBtn) {
-        scrollTopBtn.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-      }
-
-      // --- Project filter buttons ---
-      const filterBtns = document.querySelectorAll(".filter-btn");
-      const projectCards = document.querySelectorAll("[data-category]");
-
-      filterBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          filterBtns.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          const filter = btn.getAttribute("data-filter");
-          projectCards.forEach((card) => {
-            if (filter === "all" || card.getAttribute("data-category") === filter) {
-              card.style.display = "flex";
-            } else {
-              card.style.display = "none";
-            }
-          });
-        });
-      });
-
-      // --- Contact form submission to open Gmail compose ---
-      const contactForm = document.getElementById("contactForm");
-      if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const email = document.getElementById("emailAddress").value;
-          const subject = document.getElementById("subject").value;
-          const message = document.getElementById("message").value;
-          const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=shaha.tanisha@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
-          window.open(mailtoLink, "_blank");
-        });
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
