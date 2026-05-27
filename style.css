@@ -194,6 +194,7 @@ body:has(button:hover) .cursor-trail { width: 56px; height: 56px; border-color: 
   min-height: 100vh;
   display: flex;
   align-items: center;
+  
   padding: calc(var(--nav-h) + 2rem) 2rem 4rem;
   overflow: hidden;
 }
@@ -224,7 +225,9 @@ body:has(button:hover) .cursor-trail { width: 56px; height: 56px; border-color: 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 680px;
+  max-width: 1200px;
+  align-items:center;
+  margin-left:140px;
   flex: 1;
 }
 .hero-badge {
