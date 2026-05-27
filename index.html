@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 </head>
 <body>
@@ -93,39 +93,7 @@
       </div>
     </div>
 
-    <!-- 3D card floating beside hero text -->
-    <div class="hero-card-wrap reveal-right">
-      <div class="hero-card" id="heroCard">
-        <div class="card-face">
-          <div class="card-avatar">
-            <img src="images/Profile.jpeg" alt="Tanisha Shaha" onerror="this.parentElement.innerHTML='<div class=\'avatar-fallback\'>TS</div>'" />
-          </div>
-          <div class="card-info">
-            <h3>Tanisha Shaha</h3>
-            <p>Frontend Developer Intern</p>
-            <div class="card-stats">
-              <div class="stat">
-                <span class="stat-num">10+</span>
-                <span class="stat-label">Projects</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num">2</span>
-                <span class="stat-label">Papers</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num">6+</span>
-                <span class="stat-label">Certs</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-links">
-            <a href="https://github.com/TanishaShaha" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/tanisha-shaha" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:shaha.tanisha@gmail.com"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <div class="scroll-hint">
       <div class="scroll-line"></div>
@@ -138,44 +106,47 @@
     <div class="section-inner">
       <div class="section-label reveal-up">About me</div>
       <h2 class="section-title reveal-up">The human <span class="accent">behind</span> the code</h2>
-      <div class="about-grid">
-        <div class="about-text reveal-left">
-          <p>Hello! I'm a final‑year <strong>Computer Engineering student at NMIMS, Navi Mumbai</strong>, currently working as a <strong>Frontend Developer Intern at CartGeek</strong>. I have hands‑on experience designing responsive, user‑friendly web interfaces using HTML, CSS, JavaScript, PHP, Laravel, and WordPress.</p>
-          <p>My passion lies in creating seamless digital experiences. I've built Android and Flutter‑based mobile apps across domains — from health & fitness to AI‑powered crop disease diagnosis. I thrive in collaborative, Agile environments.</p>
-          <p>As I approach graduation, I'm eager to apply my knowledge to real‑world challenges, craft experiences that are not only functional but genuinely delightful.</p>
-          <div class="about-meta">
-            <div class="meta-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Mumbai, India</span>
-            </div>
-            <div class="meta-item">
-              <i class="fas fa-envelope"></i>
-              <a href="mailto:shaha.tanisha@gmail.com">shaha.tanisha@gmail.com</a>
-            </div>
-            <div class="meta-item">
-              <i class="fas fa-circle status-green"></i>
-              <span class="status-text">Open to opportunities</span>
-            </div>
+
+      <!-- Photo + text row -->
+      <div class="about-top reveal-up">
+        <div class="about-photo-wrap">
+          <img src="images/Profile.jpeg" alt="Tanisha Shaha"
+            onerror="this.parentElement.classList.add('no-photo')" />
+          <div class="about-photo-badge">
+            <span class="badge-dot"></span> Available for work
           </div>
         </div>
-        <div class="goals-grid reveal-right">
-          <div class="goal-card" data-tilt>
-            <div class="goal-icon"><i class="fas fa-rocket"></i></div>
-            <h4>Short‑Term</h4>
-            <p>Grow as a Frontend Developer delivering impactful, user‑focused solutions using HTML, CSS, JavaScript, Laravel, and mobile development.</p>
-          </div>
-          <div class="goal-card" data-tilt>
-            <div class="goal-icon"><i class="fas fa-road"></i></div>
-            <h4>Mid‑Term</h4>
-            <p>Evolve into a versatile developer with expertise in both frontend & backend, and intuitive UX design for data‑driven applications.</p>
-          </div>
-          <div class="goal-card" data-tilt>
-            <div class="goal-icon"><i class="fas fa-bullseye"></i></div>
-            <h4>Long‑Term</h4>
-            <p>Become a technical leader, mentor others, and build innovative products that combine technology and thoughtful design for positive impact.</p>
+        <div class="about-text">
+          <p>Hello! I'm a final‑year <strong>Computer Engineering student at NMIMS, Navi Mumbai</strong>, currently working as a <strong>Frontend Developer Intern at CartGeek</strong>. I have hands‑on experience designing responsive, user‑friendly web interfaces using HTML, CSS, JavaScript, PHP, Laravel, and WordPress.</p>
+          <p>My passion lies in creating seamless digital experiences. I've built Android and Flutter‑based mobile apps across domains — from health & fitness to AI‑powered crop disease diagnosis. I thrive in collaborative, Agile environments.</p>
+          <p>As I approach graduation, I'm eager to apply my knowledge to real‑world challenges and craft experiences that are not only functional but genuinely delightful.</p>
+          <div class="about-meta">
+            <div class="meta-item"><i class="fas fa-map-marker-alt"></i><span>Mumbai, India</span></div>
+            <div class="meta-item"><i class="fas fa-envelope"></i><a href="mailto:shaha.tanisha@gmail.com">shaha.tanisha@gmail.com</a></div>
+            <div class="meta-item"><i class="fas fa-circle status-green"></i><span class="status-text">Open to opportunities</span></div>
           </div>
         </div>
       </div>
+
+      <!-- Goals row below -->
+      <div class="goals-row">
+        <div class="goal-card reveal-up" data-tilt>
+          <div class="goal-icon"><i class="fas fa-rocket"></i></div>
+          <h4>Short‑Term</h4>
+          <p>Grow as a Frontend Developer delivering impactful, user‑focused solutions using HTML, CSS, JavaScript, Laravel, and mobile development.</p>
+        </div>
+        <div class="goal-card reveal-up" data-tilt style="animation-delay:0.1s">
+          <div class="goal-icon"><i class="fas fa-road"></i></div>
+          <h4>Mid‑Term</h4>
+          <p>Evolve into a versatile developer with expertise in both frontend & backend, and intuitive UX design for data‑driven applications.</p>
+        </div>
+        <div class="goal-card reveal-up" data-tilt style="animation-delay:0.2s">
+          <div class="goal-icon"><i class="fas fa-bullseye"></i></div>
+          <h4>Long‑Term</h4>
+          <p>Become a technical leader, mentor others, and build innovative products combining technology and thoughtful design for positive impact.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -237,7 +208,7 @@
           <div class="project-body">
             <div class="project-top">
               <span class="project-tag">Mobile App</span>
-              <span class="project-status in-progress">In Progress</span>
+              <span class="project-status done">Completed</span>
             </div>
             <h3>Prakriti</h3>
             <p>Lightweight offline AI‑based app using EdgeViT‑S for crop disease detection on low‑end smartphones — no internet required.</p>
@@ -524,7 +495,10 @@
         <div class="research-card reveal-left" data-tilt>
           <div class="research-icon"><i class="fas fa-seedling"></i></div>
           <div class="research-body">
-            <span class="research-conf">ICNTE — 6th Biennial International Conference on Nascent Technologies in Engineering</span>
+            <div class="research-status-row">
+              <span class="research-conf">ICNTE — 6th Biennial International Conference on Nascent Technologies in Engineering</span>
+              <span class="research-badge published">Published</span>
+            </div>
             <h3>Prakriti: An Offline Mobile Application for Crop Disease Diagnosis</h3>
             <p>A lightweight offline crop disease diagnosis system optimized for low‑end smartphones using the EdgeViT‑S model — enabling AI‑powered agriculture in connectivity‑limited regions.</p>
             <div class="research-tags"><span>EdgeViT-S</span><span>Python</span><span>Offline AI</span><span>Agriculture</span></div>
@@ -533,7 +507,10 @@
         <div class="research-card reveal-right" data-tilt>
           <div class="research-icon"><i class="fas fa-shield-alt"></i></div>
           <div class="research-body">
-            <span class="research-conf">NTAI — Nextgen Technology and AI for Sustainable Future Conference</span>
+            <div class="research-status-row">
+              <span class="research-conf">NTAI — Nextgen Technology and AI for Sustainable Future Conference</span>
+              <span class="research-badge not-published">Not Published</span>
+            </div>
             <h3>Ransomware Detection using Network Features in Windows Environments</h3>
             <p>Developed a real‑time ransomware detection system using XGBoost with a lightweight Windows GUI, analyzing network behavior to accurately classify executable files.</p>
             <div class="research-tags"><span>XGBoost</span><span>Cybersecurity</span><span>Network Analysis</span><span>ML</span></div>

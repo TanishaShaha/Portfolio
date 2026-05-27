@@ -15,7 +15,6 @@
     initNavbar();
     initHeroCanvas();
     initTypedText();
-    initHeroCardTilt();
     initTilt();
     initScrollReveal();
     initProjectFilter();
@@ -220,28 +219,6 @@
       setTimeout(type, deleting ? DEL_SPEED : SPEED);
     }
     type();
-  }
-
-  /* ── HERO CARD MOUSE TILT ───────────────────────────────────── */
-  function initHeroCardTilt() {
-    const card = document.getElementById("heroCard");
-    if (!card) return;
-    const wrap = card.parentElement;
-
-    wrap.addEventListener("mousemove", (e) => {
-      const rect = wrap.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const rx = ((e.clientY - cy) / rect.height) * 14;
-      const ry = -((e.clientX - cx) / rect.width) * 14;
-      card.style.animation = "none";
-      card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-10px)`;
-    });
-
-    wrap.addEventListener("mouseleave", () => {
-      card.style.animation = "";
-      card.style.transform = "";
-    });
   }
 
   /* ── GLOBAL TILT ─────────────────────────────────────────────── */
