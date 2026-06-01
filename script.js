@@ -1,13 +1,10 @@
 /* ============================================================
-   TANISHA SHAHA PORTFOLIO — script.js
-   Features: 3D canvas, cursor, typed text, tilt, scroll anim,
-             project filter, contact form, navbar, parallax
+   TANISHA SHAHA PORTFOLIO — script.js (Enhanced)
    ============================================================ */
 
 (function () {
   "use strict";
 
-  /* ── DOM READY ─────────────────────────────────────────────── */
   document.addEventListener("DOMContentLoaded", init);
 
   function init() {
@@ -17,20 +14,20 @@
     initTypedText();
     initTilt();
     initScrollReveal();
+    initSkillBars();
     initProjectFilter();
     initContactForm();
     initScrollTop();
     initMobileMenu();
   }
 
-  /* ── CURSOR ─────────────────────────────────────────────────── */
+  /* ── CURSOR ──────────────────────────────────────────────── */
   function initCursor() {
     const cursor = document.getElementById("cursor");
     const trail = document.getElementById("cursorTrail");
     if (!cursor || !trail) return;
 
-    let mouseX = 0, mouseY = 0;
-    let trailX = 0, trailY = 0;
+    let mouseX = 0, mouseY = 0, trailX = 0, trailY = 0;
 
     document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
@@ -48,18 +45,16 @@
     })();
   }
 
-  /* ── NAVBAR ──────────────────────────────────────────────────── */
+  /* ── NAVBAR ──────────────────────────────────────────────── */
   function initNavbar() {
     const navbar = document.getElementById("navbar");
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("section[id]");
 
     window.addEventListener("scroll", () => {
-      // Scrolled style
       if (window.scrollY > 30) navbar.classList.add("scrolled");
       else navbar.classList.remove("scrolled");
 
-      // Active link
       const scrollY = window.pageYOffset;
       sections.forEach((sec) => {
         const top = sec.offsetTop - 90;
@@ -74,7 +69,7 @@
     }, { passive: true });
   }
 
-  /* ── MOBILE MENU ─────────────────────────────────────────────── */
+  /* ── MOBILE MENU ─────────────────────────────────────────── */
   function initMobileMenu() {
     const btn = document.getElementById("hamburger");
     const menu = document.getElementById("mobileMenu");
@@ -93,7 +88,7 @@
     });
   }
 
-  /* ── HERO 3D CANVAS ──────────────────────────────────────────── */
+  /* ── HERO 3D CANVAS ──────────────────────────────────────── */
   function initHeroCanvas() {
     const canvas = document.getElementById("heroCanvas");
     if (!canvas) return;
@@ -103,18 +98,16 @@
     const COUNT = 90;
 
     function resize() {
-      W = canvas.width = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
     }
     resize();
     window.addEventListener("resize", () => { resize(); buildParticles(); });
 
-    canvas.addEventListener("mousemove", (e) => {
-      const r = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
+    document.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     });
-    canvas.addEventListener("mouseleave", () => { mouse.x = -9999; mouse.y = -9999; });
 
     function buildParticles() {
       particles = Array.from({ length: COUNT }, () => ({
@@ -132,7 +125,6 @@
     function draw() {
       ctx.clearRect(0, 0, W, H);
 
-      // Draw connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -150,9 +142,7 @@
         }
       }
 
-      // Draw & move particles
       particles.forEach((p) => {
-        // Mouse repulsion
         const mdx = p.x - mouse.x;
         const mdy = p.y - mouse.y;
         const md = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -162,26 +152,19 @@
           p.vy += (mdy / md) * force * 0.5;
         }
 
-        // Speed clamp
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
         if (speed > 2.5) { p.vx *= 0.95; p.vy *= 0.95; }
 
         p.x += p.vx;
         p.y += p.vy;
-
-        // Wrap
         if (p.x < 0) p.x = W;
         if (p.x > W) p.x = 0;
         if (p.y < 0) p.y = H;
         if (p.y > H) p.y = 0;
 
-        // Draw
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${p.hue},80%,75%,${p.alpha})`;
-        ctx.fill();
-
-        // Glow
         ctx.shadowBlur = 8;
         ctx.shadowColor = `hsla(${p.hue},90%,80%,0.5)`;
         ctx.fill();
@@ -193,7 +176,7 @@
     draw();
   }
 
-  /* ── TYPED TEXT ──────────────────────────────────────────────── */
+  /* ── TYPED TEXT ──────────────────────────────────────────── */
   function initTypedText() {
     const el = document.getElementById("roleText");
     if (!el) return;
@@ -221,10 +204,9 @@
     type();
   }
 
-  /* ── GLOBAL TILT ─────────────────────────────────────────────── */
+  /* ── TILT ────────────────────────────────────────────────── */
   function initTilt() {
-    const els = document.querySelectorAll("[data-tilt]");
-    els.forEach((el) => {
+    document.querySelectorAll("[data-tilt]").forEach((el) => {
       el.addEventListener("mousemove", (e) => {
         const rect = el.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -243,7 +225,7 @@
     });
   }
 
-  /* ── SCROLL REVEAL ───────────────────────────────────────────── */
+  /* ── SCROLL REVEAL ───────────────────────────────────────── */
   function initScrollReveal() {
     const els = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right");
     const obs = new IntersectionObserver(
@@ -251,7 +233,6 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            // Stagger children if container
             const children = entry.target.querySelectorAll(".project-card, .goal-card, .award-card, .skill-group");
             children.forEach((child, i) => {
               child.style.animationDelay = i * 0.08 + "s";
@@ -264,7 +245,24 @@
     els.forEach((el) => obs.observe(el));
   }
 
-  /* ── PROJECT FILTER ──────────────────────────────────────────── */
+  /* ── SKILL BARS (animate when in view) ───────────────────── */
+  function initSkillBars() {
+    const bars = document.querySelectorAll(".sbar-fill");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    bars.forEach((bar) => obs.observe(bar));
+  }
+
+  /* ── PROJECT FILTER ──────────────────────────────────────── */
   function initProjectFilter() {
     const btns = document.querySelectorAll(".filter-btn");
     const cards = document.querySelectorAll(".project-card");
@@ -282,7 +280,6 @@
             card.style.display = "flex";
             card.style.animationDelay = (i % 9) * 0.05 + "s";
             card.style.animation = "none";
-            // Force reflow
             void card.offsetWidth;
             card.style.animation = "cardReveal 0.4s ease both";
           } else {
@@ -293,7 +290,7 @@
     });
   }
 
-  /* ── CONTACT FORM ────────────────────────────────────────────── */
+  /* ── CONTACT FORM ────────────────────────────────────────── */
   function initContactForm() {
     const form = document.getElementById("contactForm");
     const success = document.getElementById("formSuccess");
@@ -321,7 +318,7 @@
     });
   }
 
-  /* ── SCROLL TO TOP ───────────────────────────────────────────── */
+  /* ── SCROLL TO TOP ───────────────────────────────────────── */
   function initScrollTop() {
     const btn = document.getElementById("scrollTopBtn");
     if (!btn) return;
