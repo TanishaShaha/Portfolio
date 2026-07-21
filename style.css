@@ -534,6 +534,23 @@ body:has(button:hover) .cursor-trail { width: 56px; height: 56px; border-color: 
 #scrollTopBtn.visible { display: flex; }
 #scrollTopBtn:hover { background: var(--accent-2); box-shadow: 0 4px 20px rgba(129,140,248,0.5); transform: translateY(-2px); }
 
+.avatar-ring {
+  position: absolute; inset: -16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--bg), var(--bg)) padding-box,
+              linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3)) border-box;
+  animation: ringRotate 8s linear infinite;
+  z-index: 1;                 /* ADD THIS */
+}
+
+.avatar-img-wrap {
+  width: 280px; height: 280px; border-radius: 50%; overflow: hidden;
+  background: var(--bg-card); border: 3px solid var(--bg);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), var(--glow);
+  position: relative;         /* ADD THIS */
+  z-index: 2;                 /* ADD THIS */
+}
 /* ─── TILT ──────────────────────────────────────────────────── */
 [data-tilt] { transform-style: preserve-3d; will-change: transform; }
 
