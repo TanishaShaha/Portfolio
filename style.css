@@ -178,15 +178,7 @@ body:has(button:hover) .cursor-trail { width: 56px; height: 56px; border-color: 
   position: relative; z-index: 2; flex-shrink: 0;
   width: 380px; height: 380px; display: flex; align-items: center; justify-content: center;
 }
-.avatar-ring-wrap { position: relative; width: 280px; height: 280px; }
-.avatar-ring {
-  position: absolute; inset: -16px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  background: linear-gradient(var(--bg), var(--bg)) padding-box,
-              linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3)) border-box;
-  animation: ringRotate 8s linear infinite;
-}
+
 @keyframes ringRotate { to { transform: rotate(360deg); } }
 .avatar-img-wrap {
   width: 280px; height: 280px; border-radius: 50%; overflow: hidden;
